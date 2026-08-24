@@ -25,6 +25,7 @@
     "hero.st2": "test coverage",
     "hero.st3": "e2e playwright",
     "hero.st4": "last deploy",
+    "hero.stNote": "deploy script values · illustrative",
     "hero.act": "ENGINEERING ACTIVITY",
     "hero.actNote": "last 5 weeks · illustrative",
     "dna.s1": "years building critical systems",
@@ -60,15 +61,15 @@
     "wrk.flows": "Industrial IoT · SCADA",
     "wrk.flowd": "Plant telemetry with adjustable thresholds, alarms and exact incident replay.",
     "wrk.govs": "Government · Digital services",
-    "wrk.govd": "Validated procedures with folio numbers, resumable drafts and an auditable review inbox.",
+    "wrk.govd": "Validated procedures with tracking numbers, resumable drafts and an auditable review inbox.",
     "wrk.cars": "Automotive · Sales",
-    "wrk.card": "Showroom with a real amortization quote by bank, term and down payment, plus reservations with folio.",
+    "wrk.card": "Showroom with a real amortization quote by bank, term and down payment, plus reservations with a reference number.",
     "wrk.cares": "Healthcare · HL7",
     "wrk.cared": "Clinical roster with live vitals, HL7·FHIR integrations and an audit trail on every access.",
     "wrk.vaults": "Legal · Private AI",
     "wrk.vaultd": "RAG inside your perimeter: answers always cited, zero data leaving your infrastructure.",
     "wrk.turns": "Consumer · Live queues",
-    "wrk.turnd": "Real-time turns for branches: the line lives on the phone, not in the lobby.",
+    "wrk.turnd": "Real-time queue numbers for branches: the line lives on the phone, not in the lobby.",
     "wrk.devs": "Enterprise · CI/CD",
     "wrk.devd": "Pipelines, runners and continuous quality for large teams that ship every day.",
     "wrk.dates": "Booking · Scheduling",
@@ -178,6 +179,7 @@
     "hero.st2": "cobertura de testes",
     "hero.st3": "e2e playwright",
     "hero.st4": "último deploy",
+    "hero.stNote": "valores do script de deploy · ilustrativo",
     "hero.act": "ATIVIDADE DE ENGENHARIA",
     "hero.actNote": "últimas 5 semanas · ilustrativo",
     "dna.s1": "anos construindo sistemas críticos",
@@ -205,7 +207,7 @@
     "wrk.ledgers": "Contabilidade · Conciliação",
     "wrk.ledgerd": "Banco contra razão com matching assistido, tolerâncias ajustáveis e diferença zerada.",
     "wrk.taxs": "Fiscal · Nota fiscal eletrônica",
-    "wrk.taxd": "Emissão e carimbo com checklist, cancelamentos com motivo e ordens de compra com aprovações.",
+    "wrk.taxd": "Emissão e autorização com checklist, cancelamentos com justificativa e ordens de compra com aprovações.",
     "wrk.banks": "Bancos · Fintech",
     "wrk.bankd": "Stream transacional com regras de fraude reconfiguráveis ao vivo e parecer por operação.",
     "wrk.shops": "Varejo · PDV e estoque",
@@ -353,6 +355,8 @@
     const dsc = lookup(lang, "meta.desc");
     if (md && dsc) md.setAttribute("content", dsc);
     document.documentElement.lang = LANG_ATTR[lang];
+    const canon = document.querySelector("link[rel='canonical']");
+    if (canon) canon.setAttribute("href", "https://fouryou.ai/" + (lang === "es" ? "" : "?lang=" + lang));
     document.querySelectorAll("[data-setlang]").forEach((b) => {
       b.setAttribute("aria-pressed", b.dataset.setlang === lang ? "true" : "false");
     });

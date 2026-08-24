@@ -20,6 +20,7 @@ Derivada del dorado real del ecosistema (símbolo de 4U Swap: `#8A6A10 → #D4A0
 `--brass-900 #4A3A0C · 700 #8A6A10 · 500 #D4A017 (ancla) · 300 #E3B341 · 200 #F3D77C`
 
 - Acento activo `--acc2`: `#E3B341` en dark (contraste 9.6:1 sobre `#05070A`), `#8A6A10` en light (5.1:1 sobre `#F6F8FB`). Ambos AA para texto normal.
+- CTA brass (`.btn2`) en light: gradiente `--brass-900 → --brass-700` con texto `#FFFDF4` — ≥4.9:1 en todo el recorrido del gradiente (AA).
 - **Uso quirúrgico**: prefijo `.fu`, CTA primario (`.btn2`), kickers de cluster/Sage, momento firma (pulso del hero). Brass nunca como color de superficie ni de fondo de sección.
 
 ### Semánticos (sin cambios)

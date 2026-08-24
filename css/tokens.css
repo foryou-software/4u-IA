@@ -103,7 +103,7 @@ html[data-theme="light"] {
   --acc2-hi: var(--brass-900);
   --btn-bg: var(--brand-700);
   --btn-fg: #FFFFFF;
-  --btn2-bg: linear-gradient(105deg, var(--brass-700) 0%, #A5820D 100%);
+  --btn2-bg: linear-gradient(105deg, var(--brass-900) 0%, var(--brass-700) 100%);
   --btn2-fg: #FFFDF4;
   --window:        #FBFCFE;
   --window-border: rgba(12, 29, 53, 0.12);

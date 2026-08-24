@@ -31,10 +31,13 @@
     });
   }
 
-  const rvIO = new IntersectionObserver((entries) => {
+  const rvToggle = (entries) => {
     entries.forEach((e) => e.target.classList.toggle("in", e.isIntersecting));
-  }, { threshold: 0.12 });
-  $$(".rv").forEach((el) => rvIO.observe(el));
+  };
+  const rvIO = new IntersectionObserver(rvToggle, { threshold: 0.12 });
+  // Un contenedor más alto que ~8× el viewport nunca alcanza ratio 0.12: se revela al primer pixel.
+  const rvIOTall = new IntersectionObserver(rvToggle, { threshold: 0 });
+  $$(".rv").forEach((el) => (el.offsetHeight > innerHeight * 0.8 ? rvIOTall : rvIO).observe(el));
 
   const counters = $$("[data-count]");
   if (counters.length) {
