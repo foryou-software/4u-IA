@@ -15,12 +15,15 @@ One-page estático trilingüe (ES · EN · PT-BR) con el catálogo de 15 sistema
 
 ```
 index.html          one-page (hero con consola de deploy, catálogo, capacidades, seguridad, método, FAQ, contacto)
+404.html            página de error de marca (cubre las fichas hasta que llegue su fase)
+privacidad.html     aviso de privacidad (honesto con la implementación: mailto, sin trackers)
+terminos.html       términos de servicio
 css/                tokens.css (fuente de verdad de color/tipografía/física) · base.css · site.css
 js/                 i18n.js · theme.js · fy-motion.js · site.js
 docs/               DESIGN-SYSTEM.md v18 (con changelog v17→v18)
 tools/verify.js     compuerta local: paridad i18n + términos prohibidos + higiene
 favicon.svg         Token 4 <4/>
-CNAME               dominio fouryou.ai (GitHub Pages)
+CNAME · robots.txt  dominio fouryou.ai (GitHub Pages) · indexación
 ```
 
 ## Verificación
@@ -35,4 +38,4 @@ Hosting estático (GitHub Pages sirve tal cual: rama `main`, raíz `/`; el `CNAM
 
 ## Roadmap (brief de rediseño, fases 2–5)
 
-4UTrack (ficha + demo con selector México · Europa · Brasil) → shell de fichas con 15 sistemas → refactor de los 11 demos → 404, legales, robots, sitemap y og-images.
+4UTrack (ficha + demo con selector México · Europa · Brasil) → shell de fichas `demo.html` con 15 sistemas (las tarjetas del catálogo ya enlazan a él; hasta entonces caen en el 404 de marca) → refactor de los 11 demos → sitemap, og-images y legales trilingües.
