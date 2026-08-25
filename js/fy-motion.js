@@ -1,71 +1,55 @@
-/* FOURYOU — fy-motion.js
-   Gobernanza única de loops: viewport (IntersectionObserver) + document.hidden
-   + prefers-reduced-motion. Todo loop del sitio (JS o CSS) pasa por aquí. */
-(() => {
-  "use strict";
-  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const loops = new Set();
-
-  const evalLoop = (L) => {
-    const should = !document.hidden && L.inView && (L.reducedMode === "run" || !reduced);
-    if (should === L.running) return;
-    L.running = should;
-    if (should) {
-      if (L.interval) L.timer = setInterval(L.tick, L.interval);
-      else if (L.raf) {
-        const step = () => {
-          if (!L.running) return;
-          L.tick();
-          L.rafId = requestAnimationFrame(step);
-        };
-        L.rafId = requestAnimationFrame(step);
-      }
-      if (L.onstate) L.onstate(true);
-    } else {
-      clearInterval(L.timer);
-      cancelAnimationFrame(L.rafId);
-      if (L.onstate) L.onstate(false);
-    }
-  };
-
-  /* fyLoop(tick, opts) → { stop() }
-     opts.el        elemento observado; sin él, el loop solo depende de document.hidden
-     opts.interval  ms → setInterval | opts.raf: true → requestAnimationFrame
-     opts.reduced   "off" (default) | "once" (un render estático) | "run" (es dato, sigue)
-     opts.onceTick  render estático alternativo para reduced "once"
-     opts.onstate   hook (running) — p. ej. play()/pause(); tick puede ser null */
-  window.fyLoop = (tick, opts = {}) => {
-    const mode = opts.reduced || "off";
-    if (reduced && mode === "once") {
-      (opts.onceTick || tick)();
-      return { stop() {} };
-    }
-    const L = {
-      tick, interval: opts.interval || 0, raf: !!opts.raf, reducedMode: mode,
-      inView: !opts.el, running: false, timer: 0, rafId: 0, onstate: opts.onstate,
-    };
-    loops.add(L);
-    if (opts.el) {
-      new IntersectionObserver((entries) => {
-        entries.forEach((e) => { L.inView = e.isIntersecting; evalLoop(L); });
-      }, { threshold: 0.05 }).observe(opts.el);
-    } else {
-      evalLoop(L);
-    }
-    return { stop() { L.inView = false; evalLoop(L); loops.delete(L); } };
-  };
-
-  document.addEventListener("visibilitychange", () => loops.forEach(evalLoop));
-
-  /* Loops CSS (micro-UIs del bento, stage de fichas, consola): pausa por clase */
-  const pausables = document.querySelectorAll("[data-fy-pause], .bcard .preview, #stage, .console");
-  if (pausables.length) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => e.target.classList.toggle("fy-paused", !e.isIntersecting));
-    }, { threshold: 0.05 });
-    pausables.forEach((el) => io.observe(el));
-    document.addEventListener("visibilitychange", () => {
-      pausables.forEach((el) => el.classList.toggle("fy-hidden", document.hidden));
+/* FOURYOU · fy-motion — gobernanza única de loops: viewport + pestaña */
+window.FY=window.FY||{};
+(function(){
+  /* las View Transitions cross-document rechazan su promesa al saltarse (pestaña oculta, reduced-motion): inofensivo */
+  window.addEventListener('unhandledrejection',function(e){
+    var m=String((e.reason&&e.reason.message)||e.reason||'').toLowerCase();
+    if(m.indexOf('transition')>-1&&(m.indexOf('skip')>-1||m.indexOf('abort')>-1))e.preventDefault();
+  });
+  FY.reduced=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var io=('IntersectionObserver'in window)?new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      en.target.classList.toggle('fy-paused',!en.isIntersecting);
+      en.target._fyVis=en.isIntersecting;
+      (en.target._fyCbs||[]).forEach(function(cb){cb(en.isIntersecting&&!document.hidden)});
     });
-  }
+  },{rootMargin:'60px'}):null;
+  /* registra un loop (CSS: solo pausa clases; JS: cb(running) para timers propios) */
+  FY.loop=function(el,cb){
+    if(cb){(el._fyCbs=el._fyCbs||[]).push(cb)}
+    if(io){io.observe(el)}else if(cb){cb(true)}
+  };
+  document.addEventListener('visibilitychange',function(){
+    var h=document.hidden;
+    document.documentElement.classList.toggle('fy-hidden',h);
+    document.querySelectorAll('[data-loop]').forEach(function(el){
+      (el._fyCbs||[]).forEach(function(cb){cb(!h&&el._fyVis!==false)});
+    });
+  });
+  FY.onEnterOnce=function(el,cb){
+    if(!('IntersectionObserver'in window)){cb();return}
+    var o=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){cb();o.disconnect()}})},{threshold:.3});
+    o.observe(el);
+  };
+  FY.reveal=function(){
+    if(FY.reduced){document.querySelectorAll('[data-reveal]').forEach(function(e){e.classList.add('in')});return}
+    var o=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');o.unobserve(en.target)}})},{threshold:.12});
+    document.querySelectorAll('[data-reveal]').forEach(function(e){o.observe(e)});
+  };
+  /* PRNG determinista (LCG) para todo dato simulado */
+  /* marca de agua + barra de progreso ligadas al scroll (rAF) */
+  FY.scrollFx=function(){
+    var wm=document.getElementById('wmMark'),prog=document.getElementById('scrollProg'),tick=false;
+    function run(){
+      if(tick)return;tick=true;
+      requestAnimationFrame(function(){
+        var y=window.scrollY||0,max=document.documentElement.scrollHeight-window.innerHeight;
+        if(prog)prog.style.transform='scaleX('+(max>0?Math.min(1,y/max):0)+')';
+        if(wm&&!FY.reduced)wm.style.transform='translateY('+(y*-.04)+'px) rotate('+(-7+y*.005)+'deg) scale('+(1+Math.min(.1,y*.00003))+')';
+        tick=false;
+      });
+    }
+    window.addEventListener('scroll',run,{passive:true});run();
+  };
+  FY.prng=function(seed){var s=seed>>>0;return function(){s=(s*1664525+1013904223)>>>0;return s/4294967296}};
 })();

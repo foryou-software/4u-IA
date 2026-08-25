@@ -1,0 +1,51 @@
+/* FOURYOU · demo v18 — ficha viva */
+.dnav{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:18px;padding-block:14px;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.dback{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.08em;color:var(--muted)}
+.dback:hover{color:var(--acc)}
+.dhead{padding-block:clamp(36px,6vh,64px) 26px}
+.dhead h1{font-size:clamp(1.7rem,3.4vw,2.5rem)}
+.dhead .dsic{width:.62em;height:.62em;vertical-align:-.04em;margin-right:10px}
+.dhead .card-sec{display:block;margin-bottom:14px}
+.dhead .lead{margin-top:16px}
+.stage-wrap{padding-bottom:26px}
+.stage{border-radius:var(--r-sm)}
+.stage .fy-winbody{height:40vh;min-height:290px;font-size:13px}
+@media(max-width:640px){.stage .fy-winbody{height:52vh;min-height:300px;font-size:11px}}
+.ibar{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:14px;padding:14px 18px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md)}
+.ibar .kicker{font-size:.62rem}
+.ibar .hint{font-size:.86rem;color:var(--muted);margin-right:auto}
+.ibar .btn{padding:10px 16px;font-size:.74rem}
+.ibar label{display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;color:var(--muted)}
+.ibar input[type="range"]{accent-color:var(--acc);width:150px}
+.ibar output{font-family:var(--font-mono);font-size:.72rem;color:var(--acc);min-width:3ch}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-block:26px}
+@media(max-width:640px){.kpis{grid-template-columns:1fr}}
+.kpi{background:color-mix(in srgb,var(--surface) 72%,transparent);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:var(--r-md);padding:14px 16px;transition:border-color var(--t-state) var(--ease-fade),transform var(--t-state) var(--ease-enter)}
+.kpi:hover{border-color:var(--border-brand);transform:translateY(-2px)}
+.kpi b{display:block;font-family:var(--font-mono);font-weight:500;font-size:1.2rem;letter-spacing:-.01em;color:var(--acc)}
+.kpi span{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dsec{padding-block:34px;border-top:1px solid var(--border)}
+.dsec>.kicker{display:block;margin-bottom:20px}
+.feats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:760px){.feats{grid-template-columns:1fr}}
+.feat{display:grid;grid-template-columns:auto 1fr;gap:14px;padding:16px 18px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md)}
+.feat i{font-style:normal;font-family:var(--font-mono);font-size:.72rem;font-weight:500;color:var(--acc)}
+.feat h3{font-size:.9rem;margin-bottom:4px}
+.feat p{font-size:.78rem;color:var(--muted)}
+.layers{display:grid;gap:10px}
+.layer{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-sm)}
+.layer h4{font-family:var(--font-mono);font-size:.64rem;font-weight:500;letter-spacing:.16em;color:var(--muted)}
+.layer .card-chips{margin:0}
+.dcards{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin-block:10px 40px}
+@media(max-width:760px){.dcards{grid-template-columns:1fr}}
+.dcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px}
+.dcard h3{font-size:1.2rem;margin-bottom:8px}
+.dcard p{font-size:.88rem;color:var(--muted)}
+.dcard .btn{margin-top:18px}
+.dcard.illus{border-left:3px solid var(--brand-500)}
+.dcard.illus .kicker{display:block;margin-bottom:10px}
+.dnext{display:flex;justify-content:flex-end;padding-bottom:40px}
+.dnext a{font-family:var(--font-mono);font-size:.76rem;letter-spacing:.1em}
+.dfoot{border-top:1px solid var(--border);padding-block:22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.06em;color:var(--muted)}
+@media(max-width:560px){.layer{grid-template-columns:1fr;gap:8px}.ibar{padding:12px 14px}.ibar input[type="range"]{width:120px}}
+@media (prefers-reduced-motion:reduce){.stage .fy-winbody{font-size:13px}}

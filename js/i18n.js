@@ -1,424 +1,294 @@
-(() => {
-  "use strict";
-
-  const EN = {
-    "skip": "Skip to content",
-    "nav.sys": "Systems",
-    "nav.cap": "Capabilities",
-    "nav.sec": "Security",
-    "nav.met": "Method",
-    "nav.faq": "FAQ",
-    "nav.cta": "Contact",
-    "a11y.lang": "Language",
-    "a11y.theme": "Toggle theme",
-    "a11y.menu": "Menu",
-    "hero.badge": "FOURYOU · SOFTWARE ENGINEERING · MX",
-    "hero.h1": "The systems your business runs on. <span class=\"grad\">Engineered to never fail.</span>",
-    "hero.lead": "Senior engineering for government, banking, retail, automotive and industry. We build new systems, rescue inherited ones and run them without drama.",
-    "hero.cta1": "See the systems",
-    "hero.cta2": "Talk to engineering",
-    "hero.live": "LIVE",
-    "hero.tabDeploy": "deploy",
-    "hero.tabLegacy": "legacy",
-    "hero.stTitle": "PIPELINE STATUS",
-    "hero.st1": "build cache",
-    "hero.st2": "test coverage",
-    "hero.st3": "e2e playwright",
-    "hero.st4": "last deploy",
-    "hero.stNote": "deploy script values · illustrative",
-    "hero.act": "ENGINEERING ACTIVITY",
-    "hero.actNote": "last 5 weeks · illustrative",
-    "dna.s1": "years building critical systems",
-    "dna.s2": "industries served",
-    "dna.s3": "senior engineers",
-    "dna.s4": "operations and support",
-    "wrk.eyebrow": "Catalog",
-    "wrk.h2": "Fifteen systems, <span class=\"grad\">one engineering standard.</span>",
-    "wrk.lead": "Tracking and field first, finance right behind, operations after. Every demo is functional: real flows on simulated data.",
-    "wrk.view": "VIEW SYSTEM",
-    "wrk.tag": "concept demo · simulated data",
-    "wrk.new": "NEW",
-    "cl.1t": "Tracking and field",
-    "cl.1d": "Where your people and assets are, right now.",
-    "cl.2t": "Accounting and finance",
-    "cl.2d": "From bank movement to tax stamp, without spreadsheets.",
-    "cl.3t": "Operations and commerce",
-    "cl.3d": "The rest of the business, with the same discipline.",
-    "wrk.tracks": "Field · Sales force",
-    "wrk.trackd": "Sales reps and technicians on a live map: daily routes, geofence check-ins and a timeline per employee. Privacy by design: work hours only.",
-    "wrk.fleets": "Logistics · Fleet tracking",
-    "wrk.fleetd": "Live units on the map, geofences with events and alerts with fix age in milliseconds.",
-    "wrk.maps": "GIS · Interactive maps",
-    "wrk.mapd": "Switchable layers, coverage, live measurement and territories over your own geographic data.",
-    "wrk.ledgers": "Accounting · Reconciliation",
-    "wrk.ledgerd": "Bank against general ledger with assisted matching, adjustable tolerances and a zero difference.",
-    "wrk.taxs": "Tax · E-invoicing",
-    "wrk.taxd": "Issuing and stamping with a checklist, reasoned cancellations and purchase orders with approvals.",
-    "wrk.banks": "Banking · Fintech",
-    "wrk.bankd": "Transactional stream with fraud rules you can reconfigure live and a verdict per operation.",
-    "wrk.shops": "Retail · POS and inventory",
-    "wrk.shopd": "Offline-first POS: sell with no network, sync on reconnect and close the register with no surprises.",
-    "wrk.flows": "Industrial IoT · SCADA",
-    "wrk.flowd": "Plant telemetry with adjustable thresholds, alarms and exact incident replay.",
-    "wrk.govs": "Government · Digital services",
-    "wrk.govd": "Validated procedures with tracking numbers, resumable drafts and an auditable review inbox.",
-    "wrk.cars": "Automotive · Sales",
-    "wrk.card": "Showroom with a real amortization quote by bank, term and down payment, plus reservations with a reference number.",
-    "wrk.cares": "Healthcare · HL7",
-    "wrk.cared": "Clinical roster with live vitals, HL7·FHIR integrations and an audit trail on every access.",
-    "wrk.vaults": "Legal · Private AI",
-    "wrk.vaultd": "RAG inside your perimeter: answers always cited, zero data leaving your infrastructure.",
-    "wrk.turns": "Consumer · Live queues",
-    "wrk.turnd": "Real-time queue numbers for branches: the line lives on the phone, not in the lobby.",
-    "wrk.devs": "Enterprise · CI/CD",
-    "wrk.devd": "Pipelines, runners and continuous quality for large teams that ship every day.",
-    "wrk.dates": "Booking · Scheduling",
-    "wrk.dated": "Multi-branch calendar with reminders that confirm themselves and occupancy per day.",
-    "sage.k": "CROSS-CUTTING CAPABILITY",
-    "sage.t": "Sage 300 integration",
-    "sage.d": "Journal entries, reconciliation and catalogs synced straight against your ERP. We have run Sage 300 integrations in production for years; Ledger, Tax and Bank speak it out of the box.",
-    "svc.eyebrow": "Capabilities",
-    "svc.h2": "What this house knows how to do.",
-    "svc.1t": "Product engineering",
-    "svc.1d": "Web and mobile platforms end to end: from data model to pixel, with weekly deliveries.",
-    "svc.2t": "Legacy rescue",
-    "svc.2d": "VB.NET, Delphi, AS/400: dependency maps, test harnesses and incremental migration without shutting down the operation.",
-    "svc.3t": "Integrations and ERP",
-    "svc.3d": "Sage 300, tax authority, banks, WhatsApp Business: your systems talking to each other without re-keying.",
-    "svc.4t": "Private AI",
-    "svc.4d": "RAG and models inside your perimeter, on-prem or in your cloud. Your data trains no one.",
-    "svc.5t": "Real time",
-    "svc.5d": "Streams, WebSockets and telemetry with honest latencies, measured and published.",
-    "svc.6t": "Maps and geointelligence",
-    "svc.6d": "Tracking, geofences, territories and routes: the map as an operations tool, not decoration.",
-    "svc.7t": "Cloud and DevOps",
-    "svc.7d": "Azure and AWS with CI/CD, infrastructure as code and deployments with no maintenance window.",
-    "svc.8t": "Security and compliance",
-    "svc.8d": "OAuth2/OIDC, encryption, per-access auditing and industry standards: HL7, PCI, tax authority.",
-    "svc.9t": "24/7 operations",
-    "svc.9d": "Monitoring, SLOs and incident response: no system gets delivered and abandoned.",
-    "sec.eyebrow": "Private AI and security",
-    "sec.h2": "Your data trains <span class=\"grad\">no one.</span>",
-    "sec.note": "The AI we build lives inside your perimeter: your infrastructure, your keys, your rules. Same goes for this site: zero trackers, zero third-party cookies.",
-    "sec.honesty": "No badge theater: we show real architecture and controls, not decorative certifications.",
-    "sec.1": "Models and indexes deployed on-prem or in your cloud, never in ours.",
-    "sec.2": "None of your data trains third-party models. Contractually and technically.",
-    "sec.3": "Encryption in transit and at rest; keys under your control.",
-    "sec.4": "Role-based access and an audit trail on every read, including ours.",
-    "sec.5": "AI answers always cited against your source documents.",
-    "sec.6": "Per-client isolation and NDA by default on every project.",
-    "prc.eyebrow": "Method",
-    "prc.h2": "Five phases, zero surprises.",
-    "prc.1t": "Discovery",
-    "prc.1d": "A map of the business and the current system: what hurts, what matters, what gets measured.",
-    "prc.2t": "Architecture",
-    "prc.2d": "Documented decisions, a phased plan and a closed budget per phase.",
-    "prc.3t": "Construction",
-    "prc.3d": "Weekly deliveries with a demo from week one. No black boxes.",
-    "prc.4t": "Hardening",
-    "prc.4d": "Testing, security, load and data migration rehearsed to the point of boredom.",
-    "prc.5t": "Operations",
-    "prc.5d": "Monitoring, SLOs and continuous evolution. Launch is the start, not the end.",
-    "faq.eyebrow": "Straight questions",
-    "faq.h2": "What we get asked before signing.",
-    "faq.1q": "How does a project start?",
-    "faq.1a": "With a two-to-three week discovery: we map your operation and the current system, then deliver scope, risks and a closed budget per phase. If we part ways, the diagnosis is yours.",
-    "faq.2q": "Do you work with undocumented legacy systems?",
-    "faq.2a": "It is our specialty. We build the dependency map, generate a test harness over real behavior and migrate module by module, without turning the operation off for a single day.",
-    "faq.3q": "Do I own the code?",
-    "faq.3a": "Yes. Repository, intellectual property and documentation in your name from the first commit. No hidden licenses, no forced dependency on us.",
-    "faq.4q": "Can you work inside my infrastructure?",
-    "faq.4a": "Yes: on-prem or in your cloud, under your access and audit policies. Private AI was born from exactly that requirement.",
-    "faq.5q": "How long does a system take?",
-    "faq.5a": "It depends on scope, and we say so with phases, not promises: a typical operable pilot ships in eight to twelve weeks; every following phase has its own date and deliverable.",
-    "faq.6q": "What happens after launch?",
-    "faq.6a": "24/7 operations with monitoring, SLOs and an evolution plan. No system gets delivered and abandoned; neither does ours.",
-    "cta.eyebrow": "Contact",
-    "cta.h2": "Tell us what <span class=\"grad\">your operation needs.</span>",
-    "cta.note": "We answer in business hours, with engineers, not salespeople. If you are carrying a legacy system on your back, even better.",
-    "cta.book": "Write to us directly",
-    "cta.booknote": "or book a guided trial of any system in the catalog",
-    "cta.fname": "Name",
-    "cta.fcompany": "Company",
-    "cta.femail": "Email",
-    "cta.fdetail": "What system do you need, or what hurts today?",
-    "cta.err": "Fill in the highlighted fields.",
-    "cta.send": "Send message",
-    "cta.hint": "The form opens your email client; nothing is sent to third-party servers.",
-    "foot.sys": "Systems",
-    "foot.co": "Company",
-    "foot.legalT": "Legal",
-    "foot.priv": "Privacy notice",
-    "foot.terms": "Terms of service",
-    "foot.rights": "© 2026 FOURYOU. Software engineering.",
-    "meta.title": "FOURYOU — Custom software engineering. Technology Built For You.",
-    "meta.desc": "Critical systems for government, banking, retail, automotive and industry: live field tracking, accounting and finance, legacy rescue and private AI. 8+ years of senior engineering."
-  };
-
-  const PT = {
-    "skip": "Pular para o conteúdo",
-    "nav.sys": "Sistemas",
-    "nav.cap": "Capacidades",
-    "nav.sec": "Segurança",
-    "nav.met": "Método",
-    "nav.faq": "FAQ",
-    "nav.cta": "Contato",
-    "a11y.lang": "Idioma",
-    "a11y.theme": "Alternar tema",
-    "a11y.menu": "Menu",
-    "hero.badge": "FOURYOU · ENGENHARIA DE SOFTWARE · MX",
-    "hero.h1": "Os sistemas onde seu negócio roda. <span class=\"grad\">Feitos para nunca falhar.</span>",
-    "hero.lead": "Engenharia sênior para governo, bancos, varejo, setor automotivo e indústria. Construímos sistemas novos, resgatamos os herdados e os operamos sem drama.",
-    "hero.cta1": "Ver os sistemas",
-    "hero.cta2": "Falar com a engenharia",
-    "hero.live": "AO VIVO",
-    "hero.tabDeploy": "deploy",
-    "hero.tabLegacy": "legacy",
-    "hero.stTitle": "STATUS DO PIPELINE",
-    "hero.st1": "cache de build",
-    "hero.st2": "cobertura de testes",
-    "hero.st3": "e2e playwright",
-    "hero.st4": "último deploy",
-    "hero.stNote": "valores do script de deploy · ilustrativo",
-    "hero.act": "ATIVIDADE DE ENGENHARIA",
-    "hero.actNote": "últimas 5 semanas · ilustrativo",
-    "dna.s1": "anos construindo sistemas críticos",
-    "dna.s2": "indústrias atendidas",
-    "dna.s3": "engenheiros sêniores",
-    "dna.s4": "operação e suporte",
-    "wrk.eyebrow": "Catálogo",
-    "wrk.h2": "Quinze sistemas, <span class=\"grad\">uma mesma engenharia.</span>",
-    "wrk.lead": "Rastreamento e campo primeiro, finanças logo atrás, operação depois. Cada demo é funcional: fluxos reais com dados simulados.",
-    "wrk.view": "VER FICHA",
-    "wrk.tag": "demo conceitual · dados simulados",
-    "wrk.new": "NOVO",
-    "cl.1t": "Rastreamento e campo",
-    "cl.1d": "Onde estão sua equipe e seus ativos, agora mesmo.",
-    "cl.2t": "Contabilidade e finanças",
-    "cl.2d": "Do movimento bancário à nota fiscal, sem planilhas.",
-    "cl.3t": "Operação e comércio",
-    "cl.3d": "O resto do negócio, com a mesma disciplina.",
-    "wrk.tracks": "Campo · Força de vendas",
-    "wrk.trackd": "Vendedores e técnicos em mapa ao vivo: rotas do dia, check-in por geocerca e timeline por funcionário. Privacidade por design: só em horário de trabalho.",
-    "wrk.fleets": "Logística · Rastreamento de frotas",
-    "wrk.fleetd": "Unidades ao vivo no mapa, geocercas com eventos e alertas com idade de fix em milissegundos.",
-    "wrk.maps": "SIG · Mapas interativos",
-    "wrk.mapd": "Camadas comutáveis, cobertura, medição ao vivo e territórios sobre seus próprios dados geográficos.",
-    "wrk.ledgers": "Contabilidade · Conciliação",
-    "wrk.ledgerd": "Banco contra razão com matching assistido, tolerâncias ajustáveis e diferença zerada.",
-    "wrk.taxs": "Fiscal · Nota fiscal eletrônica",
-    "wrk.taxd": "Emissão e autorização com checklist, cancelamentos com justificativa e ordens de compra com aprovações.",
-    "wrk.banks": "Bancos · Fintech",
-    "wrk.bankd": "Stream transacional com regras de fraude reconfiguráveis ao vivo e parecer por operação.",
-    "wrk.shops": "Varejo · PDV e estoque",
-    "wrk.shopd": "PDV offline-first: venda sem rede, sincronize ao reconectar e feche o caixa sem surpresas.",
-    "wrk.flows": "IoT industrial · SCADA",
-    "wrk.flowd": "Telemetria de planta com limites ajustáveis, alarmes e replay exato de incidentes.",
-    "wrk.govs": "Governo · Serviços digitais",
-    "wrk.govd": "Processos validados com protocolo, rascunho retomável e caixa de análise auditável.",
-    "wrk.cars": "Automotivo · Vendas",
-    "wrk.card": "Showroom com simulador de financiamento real por banco, prazo e entrada, e reserva com protocolo.",
-    "wrk.cares": "Saúde · HL7",
-    "wrk.cared": "Roster clínico com sinais vitais ao vivo, integrações HL7·FHIR e auditoria de cada acesso.",
-    "wrk.vaults": "Jurídico · IA privada",
-    "wrk.vaultd": "RAG dentro do seu perímetro: respostas sempre citadas e zero dados fora da sua infraestrutura.",
-    "wrk.turns": "Consumo · Filas ao vivo",
-    "wrk.turnd": "Senhas em tempo real para agências: a fila vive no celular, não no salão.",
-    "wrk.devs": "Enterprise · CI/CD",
-    "wrk.devd": "Pipelines, runners e qualidade contínua para times grandes que fazem deploy todos os dias.",
-    "wrk.dates": "Agendamento · Agenda",
-    "wrk.dated": "Agenda multiunidade com lembretes que confirmam sozinhos e ocupação por dia.",
-    "sage.k": "CAPACIDADE TRANSVERSAL",
-    "sage.t": "Integração Sage 300",
-    "sage.d": "Lançamentos, conciliação e catálogos sincronizados direto com seu ERP. A casa integra Sage 300 em produção há anos; Ledger, Tax e Bank falam isso de fábrica.",
-    "svc.eyebrow": "Capacidades",
-    "svc.h2": "O que a casa sabe fazer.",
-    "svc.1t": "Engenharia de produto",
-    "svc.1d": "Plataformas web e mobile de ponta a ponta: do modelo de dados ao pixel, com entregas semanais.",
-    "svc.2t": "Resgate de legado",
-    "svc.2d": "VB.NET, Delphi, AS/400: mapa de dependências, harness de testes e migração incremental sem desligar a operação.",
-    "svc.3t": "Integrações e ERP",
-    "svc.3d": "Sage 300, fisco, bancos, WhatsApp Business: seus sistemas conversando sem redigitação.",
-    "svc.4t": "IA privada",
-    "svc.4d": "RAG e modelos dentro do seu perímetro, on-prem ou na sua nuvem. Seus dados não treinam ninguém.",
-    "svc.5t": "Tempo real",
-    "svc.5d": "Streams, WebSockets e telemetria com latências honestas, medidas e publicadas.",
-    "svc.6t": "Mapas e geointeligência",
-    "svc.6d": "Rastreamento, geocercas, territórios e rotas: o mapa como ferramenta de operação, não enfeite.",
-    "svc.7t": "Cloud e DevOps",
-    "svc.7d": "Azure e AWS com CI/CD, infraestrutura como código e deploys sem janela de manutenção.",
-    "svc.8t": "Segurança e conformidade",
-    "svc.8d": "OAuth2/OIDC, criptografia, auditoria por acesso e padrões por setor: HL7, PCI, fisco.",
-    "svc.9t": "Operação 24/7",
-    "svc.9d": "Monitoramento, SLOs e resposta a incidentes: nenhum sistema é entregue e abandonado.",
-    "sec.eyebrow": "IA privada e segurança",
-    "sec.h2": "Seus dados não treinam <span class=\"grad\">ninguém.</span>",
-    "sec.note": "A IA que construímos vive dentro do seu perímetro: sua infraestrutura, suas chaves, suas regras. O mesmo vale para este site: zero rastreadores, zero cookies de terceiros.",
-    "sec.honesty": "Sem teatro de selos: mostramos arquitetura e controles reais, não certificações decorativas.",
-    "sec.1": "Modelos e índices implantados on-prem ou na sua nuvem, nunca na nossa.",
-    "sec.2": "Nenhum dado seu treina modelos de terceiros. Contratual e tecnicamente.",
-    "sec.3": "Criptografia em trânsito e em repouso; chaves sob seu controle.",
-    "sec.4": "Acesso por papel e auditoria de cada leitura, inclusive as nossas.",
-    "sec.5": "Respostas de IA sempre citadas contra seus documentos-fonte.",
-    "sec.6": "Isolamento por cliente e NDA por padrão em cada projeto.",
-    "prc.eyebrow": "Método",
-    "prc.h2": "Cinco fases, zero surpresas.",
-    "prc.1t": "Descoberta",
-    "prc.1d": "Mapa do negócio e do sistema atual: o que dói, o que vale, o que se mede.",
-    "prc.2t": "Arquitetura",
-    "prc.2d": "Decisões documentadas, plano por fases e orçamento fechado por fase.",
-    "prc.3t": "Construção",
-    "prc.3d": "Entregas semanais com demo desde a primeira semana. Sem caixas-pretas.",
-    "prc.4t": "Endurecimento",
-    "prc.4d": "Testes, segurança, carga e migração de dados ensaiada até o tédio.",
-    "prc.5t": "Operação",
-    "prc.5d": "Monitoramento, SLOs e evolução contínua. O lançamento é o começo, não o fim.",
-    "faq.eyebrow": "Perguntas diretas",
-    "faq.h2": "O que nos perguntam antes de assinar.",
-    "faq.1q": "Como começa um projeto?",
-    "faq.1a": "Com uma descoberta de duas a três semanas: mapeamos sua operação e o sistema atual e entregamos escopo, riscos e orçamento fechado por fase. Se não seguirmos juntos, o diagnóstico é seu.",
-    "faq.2q": "Vocês trabalham com sistemas legados sem documentação?",
-    "faq.2a": "É a nossa especialidade. Construímos o mapa de dependências, geramos um harness de testes sobre o comportamento real e migramos por módulos, sem desligar a operação um único dia.",
-    "faq.3q": "O código é meu?",
-    "faq.3a": "Sim. Repositório, propriedade intelectual e documentação no seu nome desde o primeiro commit. Sem licenças ocultas nem dependência forçada de nós.",
-    "faq.4q": "Podem trabalhar dentro da minha infraestrutura?",
-    "faq.4a": "Sim: on-prem ou na sua nuvem, com suas políticas de acesso e auditoria. A IA privada nasceu exatamente desse requisito.",
-    "faq.5q": "Quanto tempo leva um sistema?",
-    "faq.5a": "Depende do escopo, e dizemos isso com fases, não promessas: um piloto operável típico sai em oito a doze semanas; cada fase seguinte tem data e entregável próprios.",
-    "faq.6q": "O que acontece depois do lançamento?",
-    "faq.6a": "Operação 24/7 com monitoramento, SLOs e plano de evolução. Nenhum sistema é entregue e abandonado; o nosso também não.",
-    "cta.eyebrow": "Contato",
-    "cta.h2": "Conte o que <span class=\"grad\">sua operação precisa.</span>",
-    "cta.note": "Respondemos em horário comercial, com engenheiros, não vendedores. Se você carrega um sistema legado nas costas, melhor ainda.",
-    "cta.book": "Escreva direto para nós",
-    "cta.booknote": "ou agende um teste guiado de qualquer sistema do catálogo",
-    "cta.fname": "Nome",
-    "cta.fcompany": "Empresa",
-    "cta.femail": "E-mail",
-    "cta.fdetail": "Qual sistema você precisa, ou o que dói hoje?",
-    "cta.err": "Preencha os campos destacados.",
-    "cta.send": "Enviar mensagem",
-    "cta.hint": "O formulário abre seu e-mail; nada é enviado a servidores de terceiros.",
-    "foot.sys": "Sistemas",
-    "foot.co": "Empresa",
-    "foot.legalT": "Legal",
-    "foot.priv": "Aviso de privacidade",
-    "foot.terms": "Termos de serviço",
-    "foot.rights": "© 2026 FOURYOU. Engenharia de software.",
-    "meta.title": "FOURYOU — Engenharia de software sob medida. Technology Built For You.",
-    "meta.desc": "Sistemas críticos para governo, bancos, varejo, setor automotivo e indústria: rastreamento de campo ao vivo, contabilidade e finanças, resgate de legado e IA privada. 8+ anos de engenharia sênior."
-  };
-
-  const DICTS = { en: EN, pt: PT };
-  const LANG_ATTR = { es: "es", en: "en", pt: "pt-BR" };
-  const KEY = "fy-lang";
-  const ES = {};
-  let current = "es";
-
-  const nodes = () => document.querySelectorAll("[data-i18n], [data-i18n-html], [data-i18n-aria]");
-
-  const capture = () => {
-    nodes().forEach((el) => {
-      if (el.dataset.i18n && !(el.dataset.i18n in ES)) ES[el.dataset.i18n] = el.textContent;
-      if (el.dataset.i18nHtml && !(el.dataset.i18nHtml in ES)) ES[el.dataset.i18nHtml] = el.innerHTML;
-      if (el.dataset.i18nAria && !(el.dataset.i18nAria in ES)) ES[el.dataset.i18nAria] = el.getAttribute("aria-label") || "";
+/* FOURYOU · i18n — ES default / EN / PT-BR · paridad 1:1 (tools/verify.js) */
+window.FY=window.FY||{};
+(function(){
+FY.DICT={
+es:{
+ 'a11y.skip':'Saltar al contenido','a11y.theme':'Cambiar tema','a11y.lang':'Idioma','a11y.nav':'Navegación principal',
+ 'nav.sistemas':'Sistemas','nav.capacidades':'Capacidades','nav.seguridad':'Seguridad','nav.metodo':'Método','nav.faq':'FAQ','nav.contacto':'Contacto',
+ 'hero.badge':'FOURYOU · INGENIERÍA DE SOFTWARE',
+ 'hero.h1a':'Los sistemas donde corre tu negocio.','hero.h1b':'Hechos para no fallar.',
+ 'hero.lead':'Ingeniería senior para gobierno, banca, retail, automotriz e industria. Construimos sistemas nuevos, rescatamos los heredados y los operamos sin drama.',
+ 'hero.cta1':'Ver los sistemas','hero.cta2':'Hablar con ingeniería','hero.live':'EN VIVO',
+ 'inst.status':'ESTADO DEL PIPELINE','inst.s1':'build cache','inst.s2':'cobertura','inst.s3':'e2e','inst.s4':'último deploy',
+ 'inst.statusnote':'guion de deploy · ilustrativo','inst.act':'ACTIVIDAD DE INGENIERÍA','inst.actnote':'últimas 12 semanas · ilustrativo',
+ 'facts.l1':'años construyendo sistemas críticos','facts.l2':'industrias servidas','facts.l3':'ingenieros senior','facts.l4':'operación y soporte',
+ 'cat.kicker':'EL CATÁLOGO','cat.title':'Quince sistemas. Una casa.','cat.sub':'Cada ventana es software vivo: datos simulados, ingeniería real.',
+ 'cluster.1':'01 · Seguimiento y campo','cluster.2':'02 · Contaduría y finanzas','cluster.3':'03 · Operación y comercio',
+ 'card.cta':'VER FICHA →','card.new':'NUEVO','chip.demo':'demo conceptual · datos simulados',
+ 'sage.kicker':'CAPACIDAD TRANSVERSAL','sage.title':'Integración Sage 300',
+ 'sage.copy':'Pólizas, conciliación y catálogos sincronizados directo contra tu ERP. La casa lleva años integrando Sage 300 en producción; Ledger, Tax y Bank lo hablan de fábrica.',
+ 'cap.kicker':'CAPACIDADES','cap.title':'Lo que la casa sabe hacer',
+ 'cap.1.t':'Ingeniería de producto','cap.1.d':'Del descubrimiento al deploy: equipos senior que diseñan, construyen y firman lo que entregan.',
+ 'cap.2.t':'Rescate de legacy','cap.2.d':'VB.NET, Delphi, AS/400: mapa de dependencias, harness de pruebas y migración sin apagar la operación.',
+ 'cap.3.t':'Integraciones y ERP','cap.3.d':'Sage 300 en producción desde hace años; pólizas, catálogos y conciliación hablando con tu ERP.',
+ 'cap.4.t':'IA privada','cap.4.d':'RAG y modelos dentro de tu perímetro. Tus datos no entrenan a nadie — tampoco a nosotros.',
+ 'cap.5.t':'Tiempo real','cap.5.d':'SignalR, Kafka y WebSockets: telemetría, pagos y flotas con latencia de milisegundos.',
+ 'cap.6.t':'Mapas y geointeligencia','cap.6.d':'MapLibre GL y PostGIS: rutas, geocercas y territorios sobre tus propios datos.',
+ 'cap.7.t':'Cloud y DevOps','cap.7.d':'Azure, AWS, Kubernetes y Terraform; CI·CD con afectados primero y despliegues sin downtime.',
+ 'cap.8.t':'Seguridad y cumplimiento','cap.8.d':'RBAC, bitácoras y cifrado de punta a punta. Arquitectura y controles reales, no insignias.',
+ 'cap.9.t':'Operación 24/7','cap.9.d':'Monitoreo, guardias y respuesta a incidentes: los sistemas se operan, no se abandonan.',
+ 'sec.kicker':'SEGURIDAD · IA PRIVADA','sec.h1a':'Tus datos no entrenan','sec.h1b':'a nadie.',
+ 'sec.p1':'RAG y modelos dentro del perímetro del cliente','sec.p2':'Cero llamadas a APIs de IA externas con tus datos','sec.p3':'Cifrado en tránsito y en reposo','sec.p4':'RBAC y bitácora de acceso completa','sec.p5':'Despliegue on-prem o en tu propia nube','sec.p6':'Retención y borrado verificables',
+ 'sec.teatro':'Sin teatro de insignias: mostramos arquitectura y controles reales, no certificaciones decorativas.',
+ 'sec.site':'Aplica también a este sitio: cero trackers, cero cookies de terceros.',
+ 'met.kicker':'MÉTODO','met.title':'Cinco fases, cero sorpresas.',
+ 'met.1.t':'Descubrimiento','met.1.d':'Entendemos la operación real: procesos, sistemas y deuda técnica sobre la mesa.',
+ 'met.2.t':'Arquitectura','met.2.d':'Decisiones documentadas y reversibles; el diseño se firma antes de construir.',
+ 'met.3.t':'Construcción','met.3.d':'Iteraciones cortas con demos semanales; el código llega probado, no prometido.',
+ 'met.4.t':'Endurecimiento','met.4.d':'Carga, seguridad y caos controlado antes de tocar producción.',
+ 'met.5.t':'Operación','met.5.d':'Monitoreo 24/7, guardias y mejora continua tras el lanzamiento.',
+ 'faq.kicker':'FAQ','faq.title':'Lo que preguntan antes de firmar',
+ 'faq.1.q':'¿Cómo empieza un proyecto?','faq.1.a':'Con una llamada técnica y un descubrimiento corto. En una o dos semanas tienes alcance, riesgos y una propuesta con arquitectura — no un PDF de ventas.',
+ 'faq.2.q':'Mi sistema heredado no tiene documentación.','faq.2.a':'Es lo normal. Levantamos el mapa de dependencias desde el código y la base de datos, construimos un harness de pruebas y solo entonces tocamos algo.',
+ 'faq.3.q':'¿El código es mío?','faq.3.a':'Sí. Repositorio, infraestructura y documentación quedan a tu nombre desde el primer commit.',
+ 'faq.4.q':'¿Pueden trabajar dentro de mi infraestructura?','faq.4.a':'Sí: on-prem, nube privada o la tuya pública. La IA privada corre dentro de tu perímetro; nada sale.',
+ 'faq.5.q':'¿Cuánto tarda?','faq.5.a':'Depende del alcance, pero el método es fijo: cinco fases y demos desde la semana uno. Un MVP serio suele vivir entre 8 y 16 semanas.',
+ 'faq.6.q':'¿Qué pasa tras el lanzamiento?','faq.6.a':'Operación 24/7 si la quieres: monitoreo, guardias, parches y evolución. Los sistemas se operan, no se abandonan.',
+ 'con.kicker':'CONTACTO','con.title':'Hablemos de tu sistema',
+ 'con.copy':'Respondemos en horas hábiles, con ingenieros, no con vendedores. Si traes un sistema heredado a cuestas, mejor todavía.',
+ 'con.direct':'Correo directo','con.f.nombre':'Nombre','con.f.empresa':'Empresa','con.f.correo':'Correo','con.f.msg':'Cuéntanos del sistema (nuevo o heredado)',
+ 'con.submit':'Abrir correo prellenado →','con.note':'Front-only: nada se envía a servidores de terceros.','con.subject':'Proyecto para FOURYOU',
+ 'foot.sistemas':'Sistemas','foot.compania':'Compañía','foot.legal':'Legal','foot.privacidad':'Privacidad','foot.terminos':'Términos',
+ 'foot.rights':'© 2026 FOURYOU Software',
+ 'demo.back':'← Todos los sistemas','demo.kpi':'TELEMETRÍA · ILUSTRATIVA','demo.feat':'QUÉ HACE','demo.stack':'STACK POR CAPAS','demo.interact':'INTERACCIÓN',
+ 'demo.want.t':'¿Lo quieres para tu operación?','demo.want.d':'Se instala una prueba guiada con tus escenarios: datos de ejemplo tuyos, métricas acordadas y un ingeniero al teléfono.',
+ 'demo.cta':'Agendar prueba guiada →','demo.next':'Siguiente sistema →',
+ 'demo.illus.t':'ILUSTRATIVO','demo.illus.d':'El trabajo real vive bajo NDA. Esta ficha es un demo conceptual con datos simulados y generadores deterministas; nada proviene de sistemas de clientes.',
+ 'demo.subject':'Prueba guiada'
+},
+en:{
+ 'a11y.skip':'Skip to content','a11y.theme':'Toggle theme','a11y.lang':'Language','a11y.nav':'Main navigation',
+ 'nav.sistemas':'Systems','nav.capacidades':'Capabilities','nav.seguridad':'Security','nav.metodo':'Method','nav.faq':'FAQ','nav.contacto':'Contact',
+ 'hero.badge':'FOURYOU · SOFTWARE ENGINEERING',
+ 'hero.h1a':'The systems your business runs on.','hero.h1b':'Engineered to never fail.',
+ 'hero.lead':'Senior engineering for government, banking, retail, automotive and industry. We build new systems, rescue legacy ones and run them without drama.',
+ 'hero.cta1':'See the systems','hero.cta2':'Talk to engineering','hero.live':'LIVE',
+ 'inst.status':'PIPELINE STATUS','inst.s1':'build cache','inst.s2':'coverage','inst.s3':'e2e','inst.s4':'last deploy',
+ 'inst.statusnote':'deploy script · illustrative','inst.act':'ENGINEERING ACTIVITY','inst.actnote':'last 12 weeks · illustrative',
+ 'facts.l1':'years building critical systems','facts.l2':'industries served','facts.l3':'senior engineers','facts.l4':'operations & support',
+ 'cat.kicker':'THE CATALOG','cat.title':'Fifteen systems. One house.','cat.sub':'Every window is living software: simulated data, real engineering.',
+ 'cluster.1':'01 · Tracking & field','cluster.2':'02 · Accounting & finance','cluster.3':'03 · Operations & commerce',
+ 'card.cta':'VIEW SYSTEM →','card.new':'NEW','chip.demo':'concept demo · simulated data',
+ 'sage.kicker':'CROSS-CUTTING CAPABILITY','sage.title':'Sage 300 integration',
+ 'sage.copy':'Journal entries, reconciliation and catalogs synced straight against your ERP. The house has run Sage 300 integrations in production for years; Ledger, Tax and Bank speak it out of the box.',
+ 'cap.kicker':'CAPABILITIES','cap.title':'What the house knows how to do',
+ 'cap.1.t':'Product engineering','cap.1.d':'From discovery to deploy: senior teams that design, build and sign what they ship.',
+ 'cap.2.t':'Legacy rescue','cap.2.d':'VB.NET, Delphi, AS/400: dependency map, test harness and migration without shutting the operation down.',
+ 'cap.3.t':'Integrations & ERP','cap.3.d':'Sage 300 in production for years; journal entries, catalogs and reconciliation talking to your ERP.',
+ 'cap.4.t':'Private AI','cap.4.d':'RAG and models inside your perimeter. Your data trains no one — not even us.',
+ 'cap.5.t':'Real time','cap.5.d':'SignalR, Kafka and WebSockets: telemetry, payments and fleets at millisecond latency.',
+ 'cap.6.t':'Maps & geointelligence','cap.6.d':'MapLibre GL and PostGIS: routes, geofences and territories on your own data.',
+ 'cap.7.t':'Cloud & DevOps','cap.7.d':'Azure, AWS, Kubernetes and Terraform; CI·CD with affected-first builds and zero-downtime deploys.',
+ 'cap.8.t':'Security & compliance','cap.8.d':'RBAC, audit trails and end-to-end encryption. Real architecture and controls, not badges.',
+ 'cap.9.t':'24/7 operations','cap.9.d':'Monitoring, on-call and incident response: systems get operated, not abandoned.',
+ 'sec.kicker':'SECURITY · PRIVATE AI','sec.h1a':'Your data trains','sec.h1b':'no one.',
+ 'sec.p1':'RAG and models inside the client perimeter','sec.p2':'Zero calls to external AI APIs with your data','sec.p3':'Encryption in transit and at rest','sec.p4':'RBAC and a full access log','sec.p5':'Deploy on-prem or in your own cloud','sec.p6':'Verifiable retention and deletion',
+ 'sec.teatro':'No badge theater: we show real architecture and controls, not decorative certifications.',
+ 'sec.site':'It applies to this site too: zero trackers, zero third-party cookies.',
+ 'met.kicker':'METHOD','met.title':'Five phases, zero surprises.',
+ 'met.1.t':'Discovery','met.1.d':'We understand the real operation: processes, systems and technical debt on the table.',
+ 'met.2.t':'Architecture','met.2.d':'Documented, reversible decisions; the design is signed before we build.',
+ 'met.3.t':'Build','met.3.d':'Short iterations with weekly demos; code arrives tested, not promised.',
+ 'met.4.t':'Hardening','met.4.d':'Load, security and controlled chaos before touching production.',
+ 'met.5.t':'Operation','met.5.d':'24/7 monitoring, on-call and continuous improvement after launch.',
+ 'faq.kicker':'FAQ','faq.title':'What they ask before signing',
+ 'faq.1.q':'How does a project start?','faq.1.a':'With a technical call and a short discovery. Within one or two weeks you get scope, risks and a proposal with architecture — not a sales PDF.',
+ 'faq.2.q':'My legacy system has no documentation.','faq.2.a':'That is the norm. We build the dependency map from code and database, stand up a test harness, and only then touch anything.',
+ 'faq.3.q':'Do I own the code?','faq.3.a':'Yes. Repository, infrastructure and documentation are in your name from the first commit.',
+ 'faq.4.q':'Can you work inside my infrastructure?','faq.4.a':'Yes: on-prem, private cloud or your public one. Private AI runs inside your perimeter; nothing leaves.',
+ 'faq.5.q':'How long does it take?','faq.5.a':'It depends on scope, but the method is fixed: five phases and demos from week one. A serious MVP usually lives between 8 and 16 weeks.',
+ 'faq.6.q':'What happens after launch?','faq.6.a':'24/7 operations if you want it: monitoring, on-call, patches and evolution. Systems get operated, not abandoned.',
+ 'con.kicker':'CONTACT','con.title':'Let’s talk about your system',
+ 'con.copy':'We reply within business hours, with engineers, not salespeople. If you carry a legacy system on your back, even better.',
+ 'con.direct':'Direct email','con.f.nombre':'Name','con.f.empresa':'Company','con.f.correo':'Email','con.f.msg':'Tell us about the system (new or legacy)',
+ 'con.submit':'Open pre-filled email →','con.note':'Front-only: nothing is sent to third-party servers.','con.subject':'Project for FOURYOU',
+ 'foot.sistemas':'Systems','foot.compania':'Company','foot.legal':'Legal','foot.privacidad':'Privacy','foot.terminos':'Terms',
+ 'foot.rights':'© 2026 FOURYOU Software',
+ 'demo.back':'← All systems','demo.kpi':'TELEMETRY · ILLUSTRATIVE','demo.feat':'WHAT IT DOES','demo.stack':'STACK BY LAYER','demo.interact':'INTERACTION',
+ 'demo.want.t':'Want it for your operation?','demo.want.d':'We set up a guided trial with your scenarios: your sample data, agreed metrics and an engineer on the phone.',
+ 'demo.cta':'Book a guided trial →','demo.next':'Next system →',
+ 'demo.illus.t':'ILLUSTRATIVE','demo.illus.d':'The real work lives under NDA. This page is a concept demo with simulated data and deterministic generators; nothing comes from client systems.',
+ 'demo.subject':'Guided trial'
+},
+pt:{
+ 'a11y.skip':'Pular para o conteúdo','a11y.theme':'Alternar tema','a11y.lang':'Idioma','a11y.nav':'Navegação principal',
+ 'nav.sistemas':'Sistemas','nav.capacidades':'Capacidades','nav.seguridad':'Segurança','nav.metodo':'Método','nav.faq':'FAQ','nav.contacto':'Contato',
+ 'hero.badge':'FOURYOU · ENGENHARIA DE SOFTWARE',
+ 'hero.h1a':'Os sistemas onde seu negócio roda.','hero.h1b':'Feitos para nunca falhar.',
+ 'hero.lead':'Engenharia sênior para governo, bancos, varejo, automotivo e indústria. Construímos sistemas novos, resgatamos os legados e os operamos sem drama.',
+ 'hero.cta1':'Ver os sistemas','hero.cta2':'Falar com a engenharia','hero.live':'AO VIVO',
+ 'inst.status':'STATUS DO PIPELINE','inst.s1':'build cache','inst.s2':'cobertura','inst.s3':'e2e','inst.s4':'último deploy',
+ 'inst.statusnote':'roteiro de deploy · ilustrativo','inst.act':'ATIVIDADE DE ENGENHARIA','inst.actnote':'últimas 12 semanas · ilustrativo',
+ 'facts.l1':'anos construindo sistemas críticos','facts.l2':'setores atendidos','facts.l3':'engenheiros sêniores','facts.l4':'operação e suporte',
+ 'cat.kicker':'O CATÁLOGO','cat.title':'Quinze sistemas. Uma casa.','cat.sub':'Cada janela é software vivo: dados simulados, engenharia real.',
+ 'cluster.1':'01 · Rastreamento e campo','cluster.2':'02 · Contabilidade e finanças','cluster.3':'03 · Operação e comércio',
+ 'card.cta':'VER FICHA →','card.new':'NOVO','chip.demo':'demo conceitual · dados simulados',
+ 'sage.kicker':'CAPACIDADE TRANSVERSAL','sage.title':'Integração Sage 300',
+ 'sage.copy':'Lançamentos, conciliação e cadastros sincronizados direto com seu ERP. A casa integra Sage 300 em produção há anos; Ledger, Tax e Bank falam isso de fábrica.',
+ 'cap.kicker':'CAPACIDADES','cap.title':'O que a casa sabe fazer',
+ 'cap.1.t':'Engenharia de produto','cap.1.d':'Da descoberta ao deploy: times sêniores que projetam, constroem e assinam o que entregam.',
+ 'cap.2.t':'Resgate de legado','cap.2.d':'VB.NET, Delphi, AS/400: mapa de dependências, harness de testes e migração sem desligar a operação.',
+ 'cap.3.t':'Integrações e ERP','cap.3.d':'Sage 300 em produção há anos; lançamentos, cadastros e conciliação falando com seu ERP.',
+ 'cap.4.t':'IA privada','cap.4.d':'RAG e modelos dentro do seu perímetro. Seus dados não treinam ninguém — nem a nós.',
+ 'cap.5.t':'Tempo real','cap.5.d':'SignalR, Kafka e WebSockets: telemetria, pagamentos e frotas com latência de milissegundos.',
+ 'cap.6.t':'Mapas e geointeligência','cap.6.d':'MapLibre GL e PostGIS: rotas, geocercas e territórios sobre os seus próprios dados.',
+ 'cap.7.t':'Cloud e DevOps','cap.7.d':'Azure, AWS, Kubernetes e Terraform; CI·CD com afetados primeiro e deploys sem downtime.',
+ 'cap.8.t':'Segurança e conformidade','cap.8.d':'RBAC, trilhas de auditoria e criptografia de ponta a ponta. Arquitetura e controles reais, não selos.',
+ 'cap.9.t':'Operação 24/7','cap.9.d':'Monitoramento, plantão e resposta a incidentes: sistemas se operam, não se abandonam.',
+ 'sec.kicker':'SEGURANÇA · IA PRIVADA','sec.h1a':'Seus dados não treinam','sec.h1b':'ninguém.',
+ 'sec.p1':'RAG e modelos dentro do perímetro do cliente','sec.p2':'Zero chamadas a APIs externas de IA com seus dados','sec.p3':'Criptografia em trânsito e em repouso','sec.p4':'RBAC e registro completo de acesso','sec.p5':'Implantação on-prem ou na sua própria nuvem','sec.p6':'Retenção e exclusão verificáveis',
+ 'sec.teatro':'Sem teatro de selos: mostramos arquitetura e controles reais, não certificações decorativas.',
+ 'sec.site':'Vale também para este site: zero trackers, zero cookies de terceiros.',
+ 'met.kicker':'MÉTODO','met.title':'Cinco fases, zero surpresas.',
+ 'met.1.t':'Descoberta','met.1.d':'Entendemos a operação real: processos, sistemas e dívida técnica sobre a mesa.',
+ 'met.2.t':'Arquitetura','met.2.d':'Decisões documentadas e reversíveis; o design é assinado antes de construir.',
+ 'met.3.t':'Construção','met.3.d':'Iterações curtas com demos semanais; o código chega testado, não prometido.',
+ 'met.4.t':'Endurecimento','met.4.d':'Carga, segurança e caos controlado antes de tocar a produção.',
+ 'met.5.t':'Operação','met.5.d':'Monitoramento 24/7, plantão e melhoria contínua após o lançamento.',
+ 'faq.kicker':'FAQ','faq.title':'O que perguntam antes de assinar',
+ 'faq.1.q':'Como um projeto começa?','faq.1.a':'Com uma chamada técnica e uma descoberta curta. Em uma ou duas semanas você tem escopo, riscos e uma proposta com arquitetura — não um PDF de vendas.',
+ 'faq.2.q':'Meu sistema legado não tem documentação.','faq.2.a':'É o normal. Levantamos o mapa de dependências a partir do código e do banco, montamos um harness de testes e só então tocamos em algo.',
+ 'faq.3.q':'O código é meu?','faq.3.a':'Sim. Repositório, infraestrutura e documentação ficam no seu nome desde o primeiro commit.',
+ 'faq.4.q':'Podem trabalhar dentro da minha infraestrutura?','faq.4.a':'Sim: on-prem, nuvem privada ou a sua pública. A IA privada roda dentro do seu perímetro; nada sai.',
+ 'faq.5.q':'Quanto tempo leva?','faq.5.a':'Depende do escopo, mas o método é fixo: cinco fases e demos desde a semana um. Um MVP sério costuma viver entre 8 e 16 semanas.',
+ 'faq.6.q':'O que acontece após o lançamento?','faq.6.a':'Operação 24/7 se você quiser: monitoramento, plantão, patches e evolução. Sistemas se operam, não se abandonam.',
+ 'con.kicker':'CONTATO','con.title':'Vamos falar do seu sistema',
+ 'con.copy':'Respondemos em horário comercial, com engenheiros, não com vendedores. Se você carrega um sistema legado nas costas, melhor ainda.',
+ 'con.direct':'E-mail direto','con.f.nombre':'Nome','con.f.empresa':'Empresa','con.f.correo':'E-mail','con.f.msg':'Conte sobre o sistema (novo ou legado)',
+ 'con.submit':'Abrir e-mail preenchido →','con.note':'Front-only: nada é enviado a servidores de terceiros.','con.subject':'Projeto para a FOURYOU',
+ 'foot.sistemas':'Sistemas','foot.compania':'Companhia','foot.legal':'Legal','foot.privacidad':'Privacidade','foot.terminos':'Termos',
+ 'foot.rights':'© 2026 FOURYOU Software',
+ 'demo.back':'← Todos os sistemas','demo.kpi':'TELEMETRIA · ILUSTRATIVA','demo.feat':'O QUE FAZ','demo.stack':'STACK POR CAMADAS','demo.interact':'INTERAÇÃO',
+ 'demo.want.t':'Quer isso na sua operação?','demo.want.d':'Montamos um teste guiado com seus cenários: seus dados de exemplo, métricas acordadas e um engenheiro no telefone.',
+ 'demo.cta':'Agendar teste guiado →','demo.next':'Próximo sistema →',
+ 'demo.illus.t':'ILUSTRATIVO','demo.illus.d':'O trabalho real vive sob NDA. Esta ficha é um demo conceitual com dados simulados e geradores determinísticos; nada vem de sistemas de clientes.',
+ 'demo.subject':'Teste guiado'
+}};
+/* ---- registro de los 15 sistemas (orden ley) ---- */
+function K(v,es,en,pt){return [v,{es:es,en:en,pt:pt}]}
+FY.SYS=[
+{slug:'track',name:'Track',cluster:1,star:true,win:'4utrack · live ops',chips:['.NET','SignalR','MapLibre GL','PostGIS'],
+ stack:{b:['.NET 8','SignalR','PostGIS'],f:['MapLibre GL','TypeScript','PWA'],i:['Azure','Docker','CI·CD']},
+ kpi:[K('12/14','visitas hoy','visits today','visitas hoje'),K('96%','apego a ruta','route adherence','aderência à rota'),K('18 min','en sitio','on-site','no local')],
+ es:{sec:'seguimiento · campo',d:'Vendedores y técnicos en mapa vivo: rutas del día, check-in por geocerca y timeline por empleado. Privacidad por diseño: solo en horario laboral.',act:'Selecciona un empleado del roster para resaltar su ruta.',f:[['Rutas del día','optimizadas por zona y prioridad'],['Check-in por geocerca','llegada y salida se registran solas'],['Timeline por empleado','visitas, tiempos y evidencia'],['Privacidad por diseño','rastreo solo en horario laboral']]},
+ en:{sec:'field ops',d:'Reps and technicians on a live map: today’s routes, geofence check-ins and a per-employee timeline. Privacy by design: work hours only.',act:'Select an employee in the roster to highlight their route.',f:[['Daily routes','optimized by zone and priority'],['Geofence check-in','arrivals and departures log themselves'],['Per-employee timeline','visits, timings and evidence'],['Privacy by design','tracking during work hours only']]},
+ pt:{sec:'operações de campo',d:'Vendedores e técnicos num mapa ao vivo: rotas do dia, check-in por geocerca e linha do tempo por funcionário. Privacidade por padrão: só em horário de trabalho.',act:'Selecione um funcionário para destacar a rota dele.',f:[['Rotas do dia','otimizadas por zona e prioridade'],['Check-in por geocerca','chegada e saída registradas sozinhas'],['Linha do tempo por funcionário','visitas, tempos e evidência'],['Privacidade por padrão','rastreio só em horário de trabalho']]}},
+{slug:'fleet',name:'Fleet',cluster:1,wide:true,win:'4ufleet · telemetry',chips:['.NET','SignalR','MapLibre GL'],
+ stack:{b:['.NET 8','SignalR'],f:['MapLibre GL','TypeScript'],i:['Kubernetes','TimescaleDB']},
+ kpi:[K('2,340','unidades','units','unidades'),K('640 ms','por fix','per fix','por fix'),K('37','alertas de geocerca hoy','geofence alerts today','alertas de geocerca hoje')],
+ es:{sec:'telemetría de flota',d:'Telemetría de flota a escala: posiciones cada 640 ms, geocercas y alertas sin perder un solo fix.',act:'Sigue una unidad: el tablero se engancha a su señal.',b:'Seguir unidad',b2:'Dejar de seguir',f:[['Fix continuo','posición cada 640 ms por unidad'],['Geocercas operativas','entradas y salidas con alerta'],['Salud del vehículo','odómetro, motor y combustible'],['Historial reproducible','cualquier ruta, cualquier día']]},
+ en:{sec:'fleet telemetry',d:'Fleet telemetry at scale: positions every 640 ms, geofences and alerts without dropping a single fix.',act:'Follow a unit: the board locks onto its signal.',b:'Follow unit',b2:'Unfollow',f:[['Continuous fix','a position every 640 ms per unit'],['Operational geofences','entries and exits with alerts'],['Vehicle health','odometer, engine and fuel'],['Replayable history','any route, any day']]},
+ pt:{sec:'telemetria de frota',d:'Telemetria de frota em escala: posições a cada 640 ms, geocercas e alertas sem perder um único fix.',act:'Siga uma unidade: o painel trava no sinal dela.',b:'Seguir unidade',b2:'Parar de seguir',f:[['Fix contínuo','posição a cada 640 ms por unidade'],['Geocercas operacionais','entradas e saídas com alerta'],['Saúde do veículo','odômetro, motor e combustível'],['Histórico reproduzível','qualquer rota, qualquer dia']]}},
+{slug:'map',name:'Map',cluster:1,win:'4umap · layers',chips:['MapLibre GL','PostGIS','React'],
+ stack:{b:['PostGIS','Node.js'],f:['MapLibre GL','React'],i:['Docker','Tiles propios']},
+ kpi:[K('3','capas activas','active layers','camadas ativas'),K('12','territorios','territories','territórios'),K('98%','cobertura','coverage','cobertura')],
+ es:{sec:'geointeligencia',d:'Capas geoespaciales sobre tus datos: territorios, densidad y cobertura en un lienzo isométrico.',act:'Conmuta la capa de densidad y mira el lienzo reaccionar.',b:'Conmutar capa',f:[['Capas componibles','territorios, rutas y densidad'],['Consultas PostGIS','la geometría como primera clase'],['Tiles propios','tu mapa corre en tu infraestructura'],['Export operativo','GeoJSON y reportes por zona']]},
+ en:{sec:'geointelligence',d:'Geospatial layers over your data: territories, density and coverage on an isometric canvas.',act:'Toggle the density layer and watch the canvas react.',b:'Toggle layer',f:[['Composable layers','territories, routes and density'],['PostGIS queries','geometry as a first-class citizen'],['Your own tiles','your map runs on your infrastructure'],['Operational export','GeoJSON and per-zone reports']]},
+ pt:{sec:'geointeligência',d:'Camadas geoespaciais sobre seus dados: territórios, densidade e cobertura num canvas isométrico.',act:'Alterne a camada de densidade e veja o canvas reagir.',b:'Alternar camada',f:[['Camadas componíveis','territórios, rotas e densidade'],['Consultas PostGIS','geometria como cidadã de primeira classe'],['Tiles próprios','seu mapa roda na sua infraestrutura'],['Export operacional','GeoJSON e relatórios por zona']]}},
+{slug:'ledger',name:'Ledger',cluster:2,win:'4uledger · match',chips:['.NET','SQL Server','Azure'],
+ stack:{b:['.NET 8','SQL Server'],f:['React','AG Grid propio'],i:['Azure','Sage 300']},
+ kpi:[K('Δ 0.00','al cierre','at close','no fechamento'),K('1,204','pares/min','pairs/min','pares/min'),K('99.2%','auto-match','auto-match','auto-match')],
+ es:{sec:'conciliación bancaria',d:'Conciliación banco–libro mayor que cierra en cero: pares sugeridos y diferencia viva.',act:'Concilia el siguiente par sugerido.',b:'Conciliar par',f:[['Match automático','reglas y heurística por monto y fecha'],['Diferencia viva','la Δ visible en todo momento'],['Pólizas a Sage 300','asientos directo al ERP'],['Cierre auditable','quién concilió qué y cuándo']]},
+ en:{sec:'bank reconciliation',d:'Bank-to-ledger reconciliation that closes at zero: suggested pairs and a live delta.',act:'Reconcile the next suggested pair.',b:'Reconcile pair',f:[['Automatic match','rules plus amount/date heuristics'],['Live delta','the Δ visible at all times'],['Entries to Sage 300','postings straight into the ERP'],['Auditable close','who reconciled what, and when']]},
+ pt:{sec:'conciliação bancária',d:'Conciliação banco–razão que fecha em zero: pares sugeridos e diferença viva.',act:'Concilie o próximo par sugerido.',b:'Conciliar par',f:[['Match automático','regras e heurística por valor e data'],['Diferença viva','o Δ visível o tempo todo'],['Lançamentos no Sage 300','partidas direto no ERP'],['Fechamento auditável','quem conciliou o quê e quando']]}},
+{slug:'tax',name:'Tax',cluster:2,win:'4utax · cfdi',chips:['.NET','Service Bus','SQL Server'],
+ stack:{b:['.NET 8','Service Bus'],f:['React','PDF propio'],i:['SQL Server','PAC redundante']},
+ kpi:[K('40 ms','por timbre','per stamp','por autorização'),K('100%','con evidencia','with evidence','com evidência'),K('0','rechazos este mes','rejections this month','rejeições neste mês')],
+ es:{sec:'cfdi · timbrado',d:'CFDI 4.0 de punta a punta: valida, timbra y guarda evidencia de cada UUID.',act:'Corre el timbrado: checklist y sello.',b:'Timbrar',f:[['Validación previa','estructura y catálogos SAT'],['Timbrado PAC','con reintentos y bitácora'],['Evidencia por UUID','XML y acuse guardados'],['Cancelaciones limpias','flujo completo con estatus']]},
+ en:{sec:'e-invoicing · cfdi',d:'End-to-end CFDI 4.0: validate, stamp and keep evidence for every UUID.',act:'Run the stamping: checklist, then seal.',b:'Stamp',f:[['Pre-validation','structure and SAT catalogs'],['PAC stamping','with retries and an audit trail'],['Evidence per UUID','XML and receipt stored'],['Clean cancellations','full flow with status']]},
+ pt:{sec:'nota fiscal eletrônica',d:'Nota fiscal eletrônica de ponta a ponta: valida, autoriza na SEFAZ e guarda evidência de cada documento.',act:'Rode a autorização: checklist e selo.',b:'Autorizar',f:[['Validação prévia','estrutura e cadastros fiscais'],['Autorização SEFAZ','com retentativas e trilha'],['Evidência por documento','XML e recibo guardados'],['Cancelamentos limpos','fluxo completo com status']]}},
+{slug:'bank',name:'Bank',cluster:2,win:'4ubank · stream',chips:['.NET','Kafka','gRPC'],
+ stack:{b:['.NET 8','Kafka','gRPC'],f:['React','WebSockets'],i:['Kubernetes','Redis']},
+ kpi:[K('1,240','tps sostenidos','sustained tps','tps sustentados'),K('0.97','score p99','p99 score','score p99'),K('0','caídas en 12 meses','outages in 12 months','quedas em 12 meses')],
+ es:{sec:'pagos en tiempo real',d:'Streams de pagos con scoring en línea: 1,240 tps sin colas visibles.',act:'Inyecta un pico de tráfico y mira el scoring responder.',b:'Inyectar pico',f:[['Ingesta Kafka','particiones por cuenta, orden garantizado'],['Scoring en línea','riesgo por transacción, p99 bajo 40 ms'],['Reglas vivas','se despliegan sin parar el stream'],['Réplica contable','cada evento aterriza en el ledger']]},
+ en:{sec:'real-time payments',d:'Payment streams with inline scoring: 1,240 tps with no visible queues.',act:'Inject a traffic spike and watch scoring respond.',b:'Inject spike',f:[['Kafka ingestion','per-account partitions, guaranteed order'],['Inline scoring','per-transaction risk, p99 under 40 ms'],['Live rules','deployed without stopping the stream'],['Ledger replica','every event lands in the ledger']]},
+ pt:{sec:'pagamentos em tempo real',d:'Streams de pagamento com scoring em linha: 1.240 tps sem filas visíveis.',act:'Injete um pico de tráfego e veja o scoring responder.',b:'Injetar pico',f:[['Ingestão Kafka','partições por conta, ordem garantida'],['Scoring em linha','risco por transação, p99 abaixo de 40 ms'],['Regras vivas','implantadas sem parar o stream'],['Réplica contábil','cada evento aterrissa no razão']]}},
+{slug:'shop',name:'Shop',cluster:3,win:'4ushop · pos',chips:['Node.js','React PWA','IndexedDB'],
+ stack:{b:['Node.js','PostgreSQL'],f:['React PWA','IndexedDB'],i:['Docker','Sync propio']},
+ kpi:[K('3','ventas en cola offline','sales in offline queue','vendas na fila offline'),K('1.2 s','por ticket','per ticket','por cupom'),K('100%','sync al volver la red','sync when back online','sync ao voltar a rede')],
+ es:{sec:'punto de venta',d:'POS que vende aunque se caiga la red: cola offline y sincronización al volver.',act:'Vende un producto: el ticket suma y la cola offline crece.',b:'Vender',f:[['Offline primero','IndexedDB guarda cada venta'],['Sincronización honesta','reintentos con resolución de conflictos'],['Inventario en vivo','existencias por sucursal'],['Corte de caja','arqueo y diferencias al centavo']]},
+ en:{sec:'point of sale',d:'A POS that keeps selling when the network dies: offline queue, sync on return.',act:'Sell a product: the ticket grows and so does the offline queue.',b:'Sell',f:[['Offline first','IndexedDB stores every sale'],['Honest sync','retries with conflict resolution'],['Live inventory','stock per branch'],['Register close','cash count to the cent']]},
+ pt:{sec:'ponto de venda',d:'Um PDV que vende mesmo com a rede caída: fila offline e sincronização na volta.',act:'Venda um produto: o cupom soma e a fila offline cresce.',b:'Vender',f:[['Offline primeiro','IndexedDB guarda cada venda'],['Sincronização honesta','retentativas com resolução de conflitos'],['Estoque ao vivo','existências por filial'],['Fechamento de caixa','conferência ao centavo']]}},
+{slug:'flow',name:'Flow',cluster:3,win:'4uflow · scada',chips:['.NET','Kafka','TimescaleDB'],
+ stack:{b:['.NET 8','Kafka'],f:['React','Canvas propio'],i:['TimescaleDB','Edge gateway']},
+ kpi:[K('62.4','PSI actual','current PSI','PSI atual'),K('4','umbrales vivos','live thresholds','limites vivos'),K('12k','lecturas/min','readings/min','leituras/min')],
+ es:{sec:'scada · industria',d:'Telemetría industrial con umbrales vivos: la planta se lee de un vistazo.',act:'Mueve el umbral y observa cuándo dispara la alerta.',s1:'Umbral (PSI)',f:[['Ingesta industrial','Modbus y OPC-UA hacia Kafka'],['Umbrales vivos','se ajustan sin reiniciar nada'],['Series de tiempo','TimescaleDB con retención por política'],['Alertas con contexto','qué línea, qué sensor, qué turno']]},
+ en:{sec:'scada · industry',d:'Industrial telemetry with live thresholds: the plant reads at a glance.',act:'Move the threshold and watch when the alert fires.',s1:'Threshold (PSI)',f:[['Industrial ingestion','Modbus and OPC-UA into Kafka'],['Live thresholds','adjusted without restarting anything'],['Time series','TimescaleDB with policy-based retention'],['Alerts with context','which line, which sensor, which shift']]},
+ pt:{sec:'scada · indústria',d:'Telemetria industrial com limites vivos: a planta se lê num relance.',act:'Mova o limite e observe quando o alerta dispara.',s1:'Limite (PSI)',f:[['Ingestão industrial','Modbus e OPC-UA para o Kafka'],['Limites vivos','ajustados sem reiniciar nada'],['Séries temporais','TimescaleDB com retenção por política'],['Alertas com contexto','qual linha, qual sensor, qual turno']]}},
+{slug:'gov',name:'Gov',cluster:3,win:'4ugov · trámites',chips:['Java','Spring','OAuth2','Kubernetes'],
+ stack:{b:['Java','Spring'],f:['React','OAuth2'],i:['Kubernetes','PostgreSQL']},
+ kpi:[K('4','pasos auditables','auditable steps','etapas auditáveis'),K('100%','trazable','traceable','rastreável'),K('1','folio único','single case ID','protocolo único')],
+ es:{sec:'trámites digitales',d:'Trámites con folio único y pasos auditables: el ciudadano ve lo mismo que el funcionario.',act:'Avanza el trámite un paso.',b:'Avanzar paso',f:[['Folio único','GB-2201-044 se sigue de punta a punta'],['Pasos auditables','cada cambio con autor y hora'],['Identidad OAuth2','sesión ciudadana segura'],['Semáforos de carga','colas por ventanilla en vivo']]},
+ en:{sec:'digital gov services',d:'Government procedures with a single case ID and auditable steps: citizen and clerk see the same thing.',act:'Advance the case one step.',b:'Advance step',f:[['Single case ID','GB-2201-044 followed end to end'],['Auditable steps','every change with author and time'],['OAuth2 identity','a secure citizen session'],['Load signals','live queues per service window']]},
+ pt:{sec:'serviços públicos digitais',d:'Processos com protocolo único e etapas auditáveis: cidadão e servidor veem a mesma coisa.',act:'Avance o processo uma etapa.',b:'Avançar etapa',f:[['Protocolo único','GB-2201-044 acompanhado de ponta a ponta'],['Etapas auditáveis','cada mudança com autor e hora'],['Identidade OAuth2','sessão do cidadão segura'],['Sinais de carga','filas por guichê ao vivo']]}},
+{slug:'car',name:'Car',cluster:3,win:'4ucar · quote',chips:['.NET','Redis','AWS'],
+ stack:{b:['.NET 8','Redis'],f:['React','Cotizador propio'],i:['AWS','Buró API']},
+ kpi:[K('$ 8,420','por mes','per month','por mês'),K('48','meses de plazo','month term','meses de prazo'),K('20%','enganche','down payment','entrada')],
+ es:{sec:'financiamiento automotriz',d:'Cotización de crédito automotriz al instante: plazo, enganche y mensualidad en vivo.',act:'Ajusta plazo y enganche; la mensualidad se recalcula.',s1:'Plazo (meses)',s2:'Enganche (%)',f:[['Cotizador en vivo','la mensualidad al mover un slider'],['Tabla de amortización','saldo, interés y capital por mes'],['Solicitud precargada','del cotizador al buró en un paso'],['Caché Redis','catálogos y tasas sin latencia']]},
+ en:{sec:'auto financing',d:'Instant auto-loan quoting: term, down payment and monthly payment, live.',act:'Adjust term and down payment; the monthly recalculates.',s1:'Term (months)',s2:'Down payment (%)',f:[['Live quoting','the monthly updates as you drag'],['Amortization table','balance, interest and principal by month'],['Pre-filled application','from quote to credit bureau in one step'],['Redis cache','catalogs and rates with zero latency']]},
+ pt:{sec:'financiamento automotivo',d:'Cotação de crédito automotivo na hora: prazo, entrada e parcela ao vivo.',act:'Ajuste prazo e entrada; a parcela recalcula.',s1:'Prazo (meses)',s2:'Entrada (%)',f:[['Cotação ao vivo','a parcela atualiza ao arrastar'],['Tabela de amortização','saldo, juros e principal por mês'],['Proposta pré-preenchida','da cotação ao bureau num passo'],['Cache Redis','catálogos e taxas sem latência']]}},
+{slug:'care',name:'Care',cluster:3,win:'4ucare · hl7',chips:['HL7/FHIR','.NET','PostgreSQL'],
+ stack:{b:['.NET 8','HL7/FHIR'],f:['React','Monitor propio'],i:['PostgreSQL','On-prem']},
+ kpi:[K('72','bpm','bpm','bpm'),K('98%','SpO₂','SpO₂','SpO₂'),K('1,204','mensajes HL7','HL7 messages','mensagens HL7')],
+ es:{sec:'salud · hl7',d:'Integración clínica HL7/FHIR: signos vitales y mensajes fluyendo entre sistemas.',act:'Simula taquicardia: el monitor acelera gradualmente.',b:'Taquicardia',b2:'Ritmo sinusal',f:[['Mensajería HL7','ADT, ORM y ORU sin pérdida'],['FHIR moderno','recursos limpios sobre lo heredado'],['Monitoreo clínico','signos vitales en tiempo real'],['Auditoría clínica','acceso trazado por paciente']]},
+ en:{sec:'healthcare · hl7',d:'Clinical HL7/FHIR integration: vitals and messages flowing between systems.',act:'Simulate tachycardia: the monitor speeds up gradually.',b:'Tachycardia',b2:'Sinus rhythm',f:[['HL7 messaging','ADT, ORM and ORU without loss'],['Modern FHIR','clean resources over legacy'],['Clinical monitoring','vitals in real time'],['Clinical audit','access traced per patient']]},
+ pt:{sec:'saúde · hl7',d:'Integração clínica HL7/FHIR: sinais vitais e mensagens fluindo entre sistemas.',act:'Simule taquicardia: o monitor acelera gradualmente.',b:'Taquicardia',b2:'Ritmo sinusal',f:[['Mensageria HL7','ADT, ORM e ORU sem perda'],['FHIR moderno','recursos limpos sobre o legado'],['Monitoramento clínico','sinais vitais em tempo real'],['Auditoria clínica','acesso rastreado por paciente']]}},
+{slug:'vault',name:'Vault',cluster:3,win:'4uvault · rag',chips:['FastAPI','vLLM','pgvector'],
+ stack:{b:['FastAPI','vLLM'],f:['React','Citas en línea'],i:['pgvector','On-prem / VPC']},
+ kpi:[K('0','datos fuera','data out','dados fora'),K('100%','citado','cited','citado'),K('1.8 s','p95 respuesta','p95 answer','p95 resposta')],
+ es:{sec:'ia privada',d:'RAG dentro de tu perímetro: respuestas citadas, cero datos fuera.',act:'Toca una cita [1] [2] para resaltar su fuente.',f:[['Perímetro cerrado','vLLM corre en tu infraestructura'],['Todo citado','cada afirmación apunta a su fuente'],['pgvector','embeddings junto a tus tablas'],['Cero fuga','tus datos no entrenan a nadie']]},
+ en:{sec:'private ai',d:'RAG inside your perimeter: cited answers, zero data out.',act:'Tap a citation [1] [2] to highlight its source.',f:[['Closed perimeter','vLLM runs on your infrastructure'],['Everything cited','every claim points to its source'],['pgvector','embeddings next to your tables'],['Zero leakage','your data trains no one']]},
+ pt:{sec:'ia privada',d:'RAG dentro do seu perímetro: respostas citadas, zero dados fora.',act:'Toque numa citação [1] [2] para destacar a fonte.',f:[['Perímetro fechado','vLLM roda na sua infraestrutura'],['Tudo citado','cada afirmação aponta para a fonte'],['pgvector','embeddings junto às suas tabelas'],['Zero vazamento','seus dados não treinam ninguém']]}},
+{slug:'turn',name:'Turn',cluster:3,win:'4uturn · queue',chips:['Node.js','WebSockets','React PWA'],
+ stack:{b:['Node.js','WebSockets'],f:['React PWA','Pantallas'],i:['Redis','Docker']},
+ kpi:[K('A-18','en ventanilla 3','at window 3','no guichê 3'),K('5','en fila','in queue','na fila'),K('4 min','espera media','average wait','espera média')],
+ es:{sec:'filas y turnos',d:'Turnos sin fila física: pantalla, kiosco y móvil en el mismo latido.',act:'Llama al siguiente turno.',b:'Llamar siguiente',f:[['Multi-canal','kiosco, web y móvil emiten turnos'],['Pantallas en vivo','WebSockets, sin refrescar'],['Prioridades','ventanillas por tipo de trámite'],['Métricas de espera','p50 y p95 por sucursal']]},
+ en:{sec:'queues & turns',d:'Ticketing without a physical line: screen, kiosk and mobile on the same heartbeat.',act:'Call the next ticket.',b:'Call next',f:[['Multi-channel','kiosk, web and mobile issue tickets'],['Live screens','WebSockets, no refresh'],['Priorities','windows per procedure type'],['Wait metrics','p50 and p95 per branch']]},
+ pt:{sec:'filas e senhas',d:'Senhas sem fila física: telão, totem e celular no mesmo batimento.',act:'Chame a próxima senha.',b:'Chamar próxima',f:[['Multicanal','totem, web e celular emitem senhas'],['Telas ao vivo','WebSockets, sem atualizar'],['Prioridades','guichês por tipo de serviço'],['Métricas de espera','p50 e p95 por filial']]}},
+{slug:'dev',name:'Dev',cluster:3,win:'4udev · ci·cd',chips:['Node.js','Nx Cloud','Kubernetes'],
+ stack:{b:['Node.js','Nx Cloud'],f:['Playwright','Cypress'],i:['Kubernetes','Terraform']},
+ kpi:[K('12.4 s','de build','build time','de build'),K('348','tests por deploy','tests per deploy','testes por deploy'),K('94%','cobertura','coverage','cobertura')],
+ es:{sec:'plataforma ci·cd',d:'La plataforma CI·CD de la casa: 348 pruebas por deploy y afectados primero.',act:'Corre el pipeline completo.',b:'Correr pipeline',f:[['Afectados primero','solo se construye lo que cambió'],['348 pruebas','unitarias, integración y e2e'],['Escaneo de seguridad','0 hallazgos o no sale'],['Deploy de 42 ms','blue-green, cero downtime']]},
+ en:{sec:'ci·cd platform',d:'The house CI·CD platform: 348 tests per deploy, affected-first builds.',act:'Run the full pipeline.',b:'Run pipeline',f:[['Affected first','only what changed gets built'],['348 tests','unit, integration and e2e'],['Security scan','0 findings or it doesn’t ship'],['42 ms deploy','blue-green, zero downtime']]},
+ pt:{sec:'plataforma ci·cd',d:'A plataforma CI·CD da casa: 348 testes por deploy e afetados primeiro.',act:'Rode o pipeline completo.',b:'Rodar pipeline',f:[['Afetados primeiro','só se constrói o que mudou'],['348 testes','unitários, integração e e2e'],['Varredura de segurança','0 achados ou não sai'],['Deploy de 42 ms','blue-green, zero downtime']]}},
+{slug:'date',name:'Date',cluster:3,win:'4udate · agenda',chips:['.NET','SQL Server','WhatsApp API'],
+ stack:{b:['.NET 8','SQL Server'],f:['React PWA','Agenda propia'],i:['WhatsApp API','Azure']},
+ kpi:[K('64%','ocupación','occupancy','ocupação'),K('2','sucursales','branches','filiais'),K('✓','confirmación WhatsApp','WhatsApp confirmation','confirmação WhatsApp')],
+ es:{sec:'agenda y citas',d:'Agenda multi-sucursal con confirmación por WhatsApp: menos huecos, menos no-shows.',act:'Toca un slot libre para reservarlo.',f:[['Agenda por sucursal','recursos y horarios reales'],['Confirmación WhatsApp','recordatorios que sí se leen'],['Sobrecupo inteligente','huecos rellenados con lista de espera'],['No-show visible','historial por cliente']]},
+ en:{sec:'scheduling',d:'Multi-branch scheduling with WhatsApp confirmation: fewer gaps, fewer no-shows.',act:'Tap a free slot to book it.',f:[['Per-branch agenda','real resources and hours'],['WhatsApp confirmation','reminders people actually read'],['Smart overbooking','gaps refilled from the waitlist'],['Visible no-shows','history per client']]},
+ pt:{sec:'agenda e horários',d:'Agenda multifilial com confirmação por WhatsApp: menos buracos, menos faltas.',act:'Toque num horário livre para reservar.',f:[['Agenda por filial','recursos e horários reais'],['Confirmação WhatsApp','lembretes que as pessoas leem'],['Overbooking inteligente','buracos preenchidos pela lista de espera'],['Faltas visíveis','histórico por cliente']]}}
+];
+/* ---- runtime ---- */
+var stored=null;try{stored=localStorage.getItem('fy-lang')}catch(e){}
+FY.lang=(stored==='en'||stored==='pt'||stored==='es')?stored:'es';
+FY.t=function(k){var v=FY.DICT[FY.lang][k];if(v==null){console.warn('[fy-i18n] falta clave',FY.lang,k);v=FY.DICT.es[k]||k}return v};
+FY.sys=function(slug){for(var i=0;i<FY.SYS.length;i++){if(FY.SYS[i].slug===slug)return FY.SYS[i]}return null};
+FY.sysT=function(s){return s[FY.lang]||s.es};
+FY.applyI18n=function(root){
+  (root||document).querySelectorAll('[data-i18n]').forEach(function(el){el.textContent=FY.t(el.getAttribute('data-i18n'))});
+  (root||document).querySelectorAll('[data-i18n-attr]').forEach(function(el){
+    el.getAttribute('data-i18n-attr').split(';').forEach(function(pair){
+      var p=pair.split(':');if(p.length===2)el.setAttribute(p[0],FY.t(p[1]));
     });
-    ES["meta.title"] = document.title;
-    const md = document.querySelector("meta[name='description']");
-    ES["meta.desc"] = md ? md.getAttribute("content") : "";
-  };
-
-  const lookup = (lang, key) => {
-    if (lang === "es") return ES[key];
-    const d = DICTS[lang];
-    return d && key in d ? d[key] : ES[key];
-  };
-
-  const apply = (lang) => {
-    nodes().forEach((el) => {
-      if (el.dataset.i18n) {
-        const v = lookup(lang, el.dataset.i18n);
-        if (v !== undefined) el.textContent = v;
-      }
-      if (el.dataset.i18nHtml) {
-        const v = lookup(lang, el.dataset.i18nHtml);
-        if (v !== undefined) el.innerHTML = v;
-      }
-      if (el.dataset.i18nAria) {
-        const v = lookup(lang, el.dataset.i18nAria);
-        if (v !== undefined) el.setAttribute("aria-label", v);
-      }
-    });
-    const t = lookup(lang, "meta.title");
-    if (t) document.title = t;
-    const md = document.querySelector("meta[name='description']");
-    const dsc = lookup(lang, "meta.desc");
-    if (md && dsc) md.setAttribute("content", dsc);
-    document.documentElement.lang = LANG_ATTR[lang];
-    const canon = document.querySelector("link[rel='canonical']");
-    if (canon) canon.setAttribute("href", "https://fouryou.ai/" + (lang === "es" ? "" : "?lang=" + lang));
-    document.querySelectorAll("[data-setlang]").forEach((b) => {
-      b.setAttribute("aria-pressed", b.dataset.setlang === lang ? "true" : "false");
-    });
-    current = lang;
-    window.FY_LANG = lang;
-    document.dispatchEvent(new CustomEvent("fy:lang", { detail: { lang } }));
-  };
-
-  const setLang = (lang, fade) => {
-    if (!(lang in LANG_ATTR)) lang = "es";
-    if (lang === current && document.documentElement.lang === LANG_ATTR[lang]) return;
-    try { localStorage.setItem(KEY, lang); } catch (e) {}
-    if (fade && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      document.body.classList.add("lang-fading");
-      setTimeout(() => {
-        apply(lang);
-        requestAnimationFrame(() => document.body.classList.remove("lang-fading"));
-      }, 120);
-    } else {
-      apply(lang);
-    }
-  };
-
-  const report = () => {
-    const domKeys = new Set();
-    nodes().forEach((el) => {
-      if (el.dataset.i18n) domKeys.add(el.dataset.i18n);
-      if (el.dataset.i18nHtml) domKeys.add(el.dataset.i18nHtml);
-      if (el.dataset.i18nAria) domKeys.add(el.dataset.i18nAria);
-    });
-    domKeys.add("meta.title");
-    domKeys.add("meta.desc");
-    const missEn = [...domKeys].filter((k) => !(k in EN));
-    const missPt = [...domKeys].filter((k) => !(k in PT));
-    const extraEn = Object.keys(EN).filter((k) => !domKeys.has(k));
-    const extraPt = Object.keys(PT).filter((k) => !domKeys.has(k));
-    console.info(`fy-i18n · dom ${domKeys.size} · en ${Object.keys(EN).length} · pt ${Object.keys(PT).length} · missing en ${missEn.length} · missing pt ${missPt.length}`);
-    if (missEn.length) console.warn("fy-i18n · claves sin EN:", missEn);
-    if (missPt.length) console.warn("fy-i18n · claves sin PT:", missPt);
-    if (extraEn.length) console.warn("fy-i18n · EN sin uso en DOM:", extraEn);
-    if (extraPt.length) console.warn("fy-i18n · PT sin uso en DOM:", extraPt);
-  };
-
-  const init = () => {
-    capture();
-    report();
-    let saved = null;
-    try { saved = localStorage.getItem(KEY); } catch (e) {}
-    const urlLang = new URLSearchParams(location.search).get("lang");
-    const start = (urlLang && urlLang in LANG_ATTR) ? urlLang : (saved && saved in LANG_ATTR ? saved : "es");
-    if (start !== "es") apply(start);
-    else apply("es");
-    document.addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-setlang]");
-      if (btn) setLang(btn.dataset.setlang, true);
-    });
-  };
-
-  window.fySetLang = (l) => setLang(l, true);
-  window.FY_LANG = "es";
-  window.FY_I18N = { es: ES, en: EN, pt: PT };
-
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
-  else init();
+  });
+  document.documentElement.lang=FY.lang==='pt'?'pt-BR':FY.lang;
+};
+FY.setLang=function(l,instant){
+  if(l===FY.lang&&!instant)return;
+  FY.lang=l;try{localStorage.setItem('fy-lang',l)}catch(e){}
+  document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+    b.setAttribute('aria-pressed',String(b.getAttribute('data-lang-btn')===l));
+  });
+  var b=document.body;
+  var apply=function(){FY.applyI18n();document.dispatchEvent(new CustomEvent('fy:lang',{detail:l}))};
+  if(instant||FY.reduced){apply();return}
+  b.classList.add('fy-langfade');
+  setTimeout(function(){apply();b.classList.remove('fy-langfade')},120);
+};
+FY.bindLang=function(){
+  document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+    b.addEventListener('click',function(){FY.setLang(b.getAttribute('data-lang-btn'))});
+    b.setAttribute('aria-pressed',String(b.getAttribute('data-lang-btn')===FY.lang));
+  });
+};
 })();

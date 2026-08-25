@@ -1,43 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>404 — FOURYOU</title>
 <meta name="robots" content="noindex">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<script>try{var t=localStorage.getItem("fy-theme");document.documentElement.dataset.theme=t==="light"?"light":"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/tokens.css">
-<link rel="stylesheet" href="css/base.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script src="js/theme.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/tokens.css"><link rel="stylesheet" href="css/base.css">
 <style>
-.nf { min-height: 100vh; display: grid; place-content: center; justify-items: center; text-align: center; gap: var(--s2); padding: var(--s3); }
-.nf .mark { width: 44px; height: 44px; color: var(--text); margin-bottom: var(--s1); }
-.nf .code { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.3em; color: var(--acc2); }
-.nf h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); max-width: 22ch; }
-.nf p { color: var(--text-mut); max-width: 44ch; }
-.nf .en { font-size: 0.85rem; }
-.nf .acts { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: var(--s2); }
+.nf{min-height:100vh;display:grid;place-content:center;justify-items:center;text-align:center;gap:16px;padding:24px}
+.nf .code{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.3em;color:var(--acc)}
+.nf h1{font-size:clamp(1.8rem,5vw,2.8rem);max-width:22ch}
+.nf p{color:var(--muted);max-width:44ch}
+.nf .en{font-size:.85rem}
+.nf .acts{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:14px}
 </style>
 </head>
 <body>
 <main class="nf">
-  <svg class="mark" viewBox="0 0 96 96" fill="none" aria-hidden="true">
-    <path d="M24 30 L8 48 L24 66"></path>
-    <path d="M72 30 L88 48 L72 66"></path>
-    <path class="mk-4" d="M46 30 L34 50 H52"></path>
-    <path class="mk-4" d="M46 42 V66"></path>
-    <path class="mk-s" d="M64 30 L54 66"></path>
-  </svg>
+  <span class="fy-core nsm" aria-hidden="true"><span class="fy-mark"><span class="bk">&lt;</span><span class="b4">4U</span><span class="bs">/&gt;</span></span></span>
   <span class="code">ERROR 404</span>
-  <h1>Esta página aún no existe.</h1>
-  <p>Si buscabas la ficha de un sistema, está en construcción: el catálogo completo con fichas y demos interactivos llega en las siguientes fases del sitio.</p>
-  <p class="en">This page does not exist yet — system pages are on their way.</p>
+  <h1>Esta página no existe.</h1>
+  <p>Revisa la dirección o vuelve al inicio — los quince sistemas viven en el catálogo.</p>
+  <p class="en">This page does not exist — the fifteen systems live in the catalog.</p>
   <div class="acts">
-    <a class="btn" href="index.html">Volver al inicio</a>
-    <a class="btn-ghost" href="index.html#contacto">Contacto</a>
+    <a class="btn btn-primary" href="index.html">Volver al inicio</a>
+    <a class="btn btn-ghost" href="index.html#contacto">Contacto</a>
   </div>
 </main>
 </body>

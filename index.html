@@ -1,707 +1,210 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FOURYOU — Ingeniería de software a la medida. Technology Built For You.</title>
-<meta name="description" content="Sistemas críticos para gobierno, banca, retail, automotriz e industria: seguimiento de campo en vivo, contaduría y finanzas, rescate de legacy e IA privada. 8+ años de ingeniería senior.">
-<link rel="canonical" href="https://fouryou.ai/">
-<link rel="alternate" hreflang="es" href="https://fouryou.ai/">
-<link rel="alternate" hreflang="en" href="https://fouryou.ai/?lang=en">
-<link rel="alternate" hreflang="pt-BR" href="https://fouryou.ai/?lang=pt">
-<link rel="alternate" hreflang="x-default" href="https://fouryou.ai/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="FOURYOU">
-<meta property="og:title" content="FOURYOU — Ingeniería de software a la medida">
-<meta property="og:description" content="Los sistemas donde corre tu negocio. Hechos para no fallar. Technology Built For You.">
-<meta property="og:url" content="https://fouryou.ai/">
-<meta property="og:image" content="https://fouryou.ai/assets/og/og-es.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="FOURYOU — Ingeniería de software a la medida">
-<meta name="twitter:description" content="Los sistemas donde corre tu negocio. Hechos para no fallar.">
-<meta name="twitter:image" content="https://fouryou.ai/assets/og/og-es.png">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<script>try{var t=localStorage.getItem("fy-theme");document.documentElement.dataset.theme=t==="light"?"light":"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/tokens.css">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/site.css">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
-{"@type":"Organization","name":"FOURYOU","url":"https://fouryou.ai/","email":"eddy.penaloza@fouryou.io","foundingDate":"2018","slogan":"Technology Built For You.","knowsAbout":["Software engineering","Legacy modernization","Field tracking","Fintech","Private AI","Sage 300 integration"]},
-{"@type":"WebSite","name":"FOURYOU","url":"https://fouryou.ai/","inLanguage":["es","en","pt-BR"]},
-{"@type":"SoftwareApplication","name":"4UTrack","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Seguimiento en tiempo real de vendedores y empleados de campo: rutas, check-in por geocerca y KPIs de supervisión."},
-{"@type":"SoftwareApplication","name":"4UFleet","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Rastreo de flotillas en vivo con geocercas, alertas y telemetría."},
-{"@type":"SoftwareApplication","name":"4ULedger","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Conciliación banco–GL con matching asistido e integración Sage 300."}
-]}
-</script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FOURYOU — Technology Built For You.</title>
+<meta name="description" content="FOURYOU Software: ingeniería senior para gobierno, banca, retail, automotriz e industria. 15 sistemas 4U, rescate de legacy e IA privada.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script src="js/theme.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/tokens.css"><link rel="stylesheet" href="css/base.css"><link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-<a class="skip" href="#main" data-i18n="skip">Saltar al contenido</a>
-
-<header class="nav" id="nav">
-  <div class="container nav-inner">
-    <a class="brand-lockup" href="#" aria-label="FOURYOU">
-      <svg class="mark" viewBox="0 0 96 96" width="24" height="24" fill="none" aria-hidden="true">
-        <path d="M24 30 L8 48 L24 66"></path>
-        <path d="M72 30 L88 48 L72 66"></path>
-        <path class="mk-4" d="M46 30 L34 50 H52"></path>
-        <path class="mk-4" d="M46 42 V66"></path>
-        <path class="mk-s" d="M64 30 L54 66"></path>
-      </svg>
-      <span class="wordmark">FOURYOU</span>
-      <span class="word-sub">software</span>
-    </a>
-    <nav class="nav-links" aria-label="principal">
-      <a href="#sistemas" data-i18n="nav.sys">Sistemas</a>
-      <a href="#capacidades" data-i18n="nav.cap">Capacidades</a>
-      <a href="#seguridad" data-i18n="nav.sec">Seguridad</a>
-      <a href="#metodo" data-i18n="nav.met">Método</a>
-      <a href="#faq" data-i18n="nav.faq">FAQ</a>
-    </nav>
-    <div class="nav-tools">
-      <div class="langseg" role="group" aria-label="Idioma" data-i18n-aria="a11y.lang">
-        <button type="button" data-setlang="es" aria-pressed="true">ES</button>
-        <button type="button" data-setlang="en" aria-pressed="false">EN</button>
-        <button type="button" data-setlang="pt" aria-pressed="false">PT</button>
-      </div>
-      <button type="button" class="theme-btn" data-theme-toggle aria-label="Cambiar tema" data-i18n-aria="a11y.theme">
-        <svg class="ic ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><path d="M20 13.2A8.2 8.2 0 0 1 10.8 4 8.2 8.2 0 1 0 20 13.2Z"></path></svg>
-        <svg class="ic ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><rect x="8.5" y="8.5" width="7" height="7"></rect><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"></path></svg>
-      </button>
-      <a class="btn nav-cta" href="#contacto" data-i18n="nav.cta">Contacto</a>
-      <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobilePanel" aria-label="Menú" data-i18n-aria="a11y.menu">
-        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><path d="M3.5 6.5h17M3.5 12h17M3.5 17.5h17"></path></svg>
-      </button>
+<div class="wm" aria-hidden="true"><span class="wm-mark" id="wmMark"><span class="bk">&lt;</span>4U<span class="bs">/&gt;</span></span></div>
+<div class="scrollbar" aria-hidden="true"><i id="scrollProg"></i></div>
+<a class="skip" href="#main" data-i18n="a11y.skip">Saltar al contenido</a>
+<header class="nav container" data-i18n-attr="aria-label:a11y.nav" aria-label="Navegación principal">
+  <a class="fy-brand" href="#top" aria-label="FOURYOU">
+    <span class="fy-core nsm" aria-hidden="true"><span class="fy-mark"><span class="bk">&lt;</span><span class="b4">4U</span><span class="bs">/&gt;</span></span></span>
+    <span class="fy-word">FOURYOU<i>software</i></span>
+  </a>
+  <nav class="links" aria-label="Secciones">
+    <a href="#sistemas" data-i18n="nav.sistemas">Sistemas</a>
+    <a href="#capacidades" data-i18n="nav.capacidades">Capacidades</a>
+    <a href="#seguridad" data-i18n="nav.seguridad">Seguridad</a>
+    <a href="#metodo" data-i18n="nav.metodo">Método</a>
+    <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    <a href="#contacto" data-i18n="nav.contacto">Contacto</a>
+  </nav>
+  <div class="ctrl">
+    <div class="langs" role="group" data-i18n-attr="aria-label:a11y.lang" aria-label="Idioma">
+      <button data-lang-btn="es">ES</button><button data-lang-btn="en">EN</button><button data-lang-btn="pt">PT</button>
     </div>
+    <button class="tbtn" data-theme-btn data-i18n-attr="aria-label:a11y.theme" aria-label="Cambiar tema">
+      <svg class="moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><path d="M20 13 A8 8 0 1 1 11 4 A7 7 0 0 0 20 13 Z"></path></svg>
+      <svg class="sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><rect x="8.5" y="8.5" width="7" height="7" rx="2"></rect><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.5 4.5l2 2M17.5 17.5l2 2M19.5 4.5l-2 2M6.5 17.5l-2 2"></path></svg>
+    </button>
   </div>
 </header>
-<div class="mobile-panel" id="mobilePanel">
-  <a href="#sistemas" data-i18n="nav.sys">Sistemas</a>
-  <a href="#capacidades" data-i18n="nav.cap">Capacidades</a>
-  <a href="#seguridad" data-i18n="nav.sec">Seguridad</a>
-  <a href="#metodo" data-i18n="nav.met">Método</a>
-  <a href="#faq" data-i18n="nav.faq">FAQ</a>
-  <a href="#contacto" data-i18n="nav.cta">Contacto</a>
-</div>
-
 <main id="main">
-<section class="hero" id="hero" data-screen-label="Hero">
-  <div class="beam b1" aria-hidden="true"></div>
-  <div class="beam b2" aria-hidden="true"></div>
+<section class="hero" id="top" data-screen-label="Hero">
+  <div class="beam b1"></div><div class="beam b2"></div>
   <div class="container hero-grid">
-    <div class="hero-copy">
-      <div class="emblem" id="emblem" aria-hidden="true">
-        <span class="wave"></span>
-        <span class="wave w2"></span>
-        <span class="wave w3"></span>
-        <div class="emblem-core" id="emblemCore">
-          <svg class="mark-lg" viewBox="0 0 96 96" fill="none">
-            <path class="ml-stroke ml-l" d="M24 30 L8 48 L24 66"></path>
-            <path class="ml-stroke ml-r" d="M72 30 L88 48 L72 66"></path>
-            <path class="ml-4 ml-4a" d="M46 30 L34 50 H52"></path>
-            <path class="ml-4 ml-4b" d="M46 42 V66"></path>
-            <path class="ml-s" d="M64 30 L54 66"></path>
-          </svg>
-        </div>
+    <div>
+      <div class="fy-emblem hin" id="emblem" style="--hd:0ms">
+        <span class="fy-wave"></span><span class="fy-wave w2"></span><span class="fy-wave w3"></span>
+        <span class="fy-core"><span class="fy-mark" aria-hidden="true"><span class="bk">&lt;</span><span class="b4">4U</span><span class="bs">/&gt;</span></span><span class="fy-sheen"></span></span>
       </div>
-      <p class="hero-badge mono" data-i18n="hero.badge">FOURYOU · INGENIERÍA DE SOFTWARE · MX</p>
-      <h1 data-i18n-html="hero.h1">Los sistemas donde corre tu negocio. <span class="grad">Hechos para no fallar.</span></h1>
-      <p class="hero-lead" data-i18n="hero.lead">Ingeniería senior para gobierno, banca, retail, automotriz e industria. Construimos sistemas nuevos, rescatamos los heredados y los operamos sin drama.</p>
-      <div class="hero-ctas">
-        <a class="btn2" href="#sistemas"><span data-i18n="hero.cta1">Ver los sistemas</span><svg class="ic arrow-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6"></path></svg></a>
-        <a class="btn-ghost" href="#contacto" data-i18n="hero.cta2">Hablar con ingeniería</a>
+      <p class="hero-badge mono hin" style="--hd:60ms" data-i18n="hero.badge">FOURYOU · INGENIERÍA DE SOFTWARE</p>
+      <h1 class="hin" style="--hd:110ms"><span data-i18n="hero.h1a">Los sistemas donde corre tu negocio.</span> <span class="grad sweep" data-i18n="hero.h1b">Hechos para no fallar.</span></h1>
+      <p class="lead hin" style="--hd:170ms" data-i18n="hero.lead">Ingeniería senior para gobierno, banca, retail, automotriz e industria. Construimos sistemas nuevos, rescatamos los heredados y los operamos sin drama.</p>
+      <div class="hero-ctas hin" style="--hd:230ms">
+        <a class="btn btn-primary" href="#sistemas" data-i18n="hero.cta1">Ver los sistemas</a>
+        <a class="btn btn-ghost" href="#contacto" data-i18n="hero.cta2">Hablar con ingeniería</a>
       </div>
-      <p class="hero-tagline mono">Technology Built For You.</p>
     </div>
-    <div class="hero-ops" id="heroOps">
-      <div class="console spot" id="console">
-        <div class="con-bar">
-          <span class="con-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="mono con-title">fouryou — pipeline</span>
-          <span class="con-live mono"><i class="live-dot" aria-hidden="true"></i><span data-i18n="hero.live">EN VIVO</span></span>
+    <div class="hero-right">
+      <figure class="fy-window console hin" id="console" style="--hd:160ms" data-loop>
+        <div class="fy-winbar"><span class="fy-dots"><i></i><i></i><i></i></span><span class="fy-wintitle">fouryou — pipeline</span><span class="fy-live" data-i18n="hero.live">EN VIVO</span></div>
+        <div class="tabs" role="tablist">
+          <button role="tab" aria-selected="true" data-tab="deploy">deploy</button>
+          <button role="tab" aria-selected="false" data-tab="legacy">legacy</button>
         </div>
-        <div class="con-tabs" role="tablist" aria-label="pipeline">
-          <button type="button" role="tab" id="tabDeploy" aria-selected="true" class="mono active" data-contab="deploy" data-i18n="hero.tabDeploy">deploy</button>
-          <button type="button" role="tab" id="tabLegacy" aria-selected="false" class="mono" data-contab="legacy" data-i18n="hero.tabLegacy">legacy</button>
+        <div class="cbody" id="cbody" aria-live="off"></div>
+        <span class="pulse-l"></span>
+      </figure>
+      <div class="insts">
+        <div class="inst hin" id="instStatus" style="--hd:300ms" data-loop>
+          <h3 data-i18n="inst.status">ESTADO DEL PIPELINE</h3>
+          <div class="pline">
+            <div class="pstat" style="--i:0"><i></i><span data-i18n="inst.s1">build cache</span><b id="st1">87%</b></div>
+            <div class="pstat" style="--i:1"><i></i><span data-i18n="inst.s2">cobertura</span><b id="st2">94%</b></div>
+            <div class="pstat" style="--i:2"><i></i><span data-i18n="inst.s3">e2e</span><b class="ok2" id="st3">96/96</b></div>
+            <div class="pstat live" style="--i:3"><i></i><span data-i18n="inst.s4">último deploy</span><b id="st4">42 ms</b></div>
+          </div>
+          <p class="note" data-i18n="inst.statusnote">guion de deploy · ilustrativo</p>
+          <span class="pulse-l"></span>
         </div>
-        <div class="con-body mono" id="conBody" aria-hidden="true"></div>
-      </div>
-      <div class="ops-row">
-        <div class="statusboard" id="statusboard">
-          <p class="ops-title mono" data-i18n="hero.stTitle">ESTADO DEL PIPELINE</p>
-          <ul class="sb-list mono tnum">
-            <li><span data-i18n="hero.st1">build cache</span><strong id="sbCache">87%</strong></li>
-            <li><span data-i18n="hero.st2">cobertura de pruebas</span><strong id="sbCov">94%</strong></li>
-            <li><span data-i18n="hero.st3">e2e playwright</span><strong id="sbE2e">96/96</strong></li>
-            <li><span data-i18n="hero.st4">último deploy</span><strong id="sbDeploy">42 ms</strong></li>
-          </ul>
-          <p class="ops-note mono" data-i18n="hero.stNote">guion de deploy · ilustrativo</p>
-        </div>
-        <div class="activity" id="activity">
-          <p class="ops-title mono" data-i18n="hero.act">ACTIVIDAD DE INGENIERÍA</p>
-          <div class="heatmap" id="heatmap" aria-hidden="true"></div>
-          <p class="ops-note mono" data-i18n="hero.actNote">últimas 5 semanas · ilustrativo</p>
+        <div class="inst hin" id="instAct" style="--hd:380ms" data-loop>
+          <h3 data-i18n="inst.act">ACTIVIDAD DE INGENIERÍA</h3>
+          <div class="heat" id="heat" aria-hidden="true"></div>
+          <div class="commit mono" id="commitLine" aria-hidden="true"></div>
+          <p class="note" data-i18n="inst.actnote">últimas 12 semanas · ilustrativo</p>
+          <span class="pulse-l"></span>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<section class="strip" data-screen-label="Cifras">
-  <div class="container strip-grid">
-    <div class="stat rv"><strong class="mono tnum" data-count="8" data-suffix="+">8+</strong><span data-i18n="dna.s1">años construyendo sistemas críticos</span></div>
-    <div class="stat rv" style="--d:.06s"><strong class="mono tnum" data-count="10" data-suffix="+">10+</strong><span data-i18n="dna.s2">industrias servidas</span></div>
-    <div class="stat rv" style="--d:.12s"><strong class="mono tnum" data-count="100" data-suffix="%">100%</strong><span data-i18n="dna.s3">ingenieros senior</span></div>
-    <div class="stat rv" style="--d:.18s"><strong class="mono tnum">24/7</strong><span data-i18n="dna.s4">operación y soporte</span></div>
-  </div>
-</section>
-
-<div class="ticker" data-fy-pause aria-hidden="true">
-  <ul class="ticker-track mono" id="tickerTrack">
-    <li>Angular</li><li>React</li><li>TypeScript</li><li>Node.js</li><li>Java</li><li>.NET</li><li>Python</li><li>SQL Server</li><li>PostgreSQL</li><li>Kafka</li><li>Redis</li><li>GraphQL</li><li>Azure</li><li>AWS</li><li>Docker</li><li>Kubernetes</li><li>Terraform</li><li>CI·CD</li><li>Playwright</li><li>Cypress</li><li>WebSockets</li><li>Private AI</li>
-  </ul>
-</div>
-
-<section class="work" id="sistemas" data-screen-label="Sistemas">
+<section class="facts" data-screen-label="Hechos">
   <div class="container">
-    <header class="sec-head rv">
-      <p class="eyebrow" data-i18n="wrk.eyebrow">Catálogo</p>
-      <h2 data-i18n-html="wrk.h2">Quince sistemas, <span class="grad">una misma ingeniería.</span></h2>
-      <p class="sec-lead" data-i18n="wrk.lead">Seguimiento y campo primero, finanzas enseguida, operación detrás. Cada demo es funcional: flujos reales con datos simulados.</p>
-    </header>
-
-    <div class="cluster rv" data-screen-label="Cluster 01 Seguimiento">
-      <div class="cluster-head">
-        <span class="cluster-no mono">01</span>
-        <div><h3 data-i18n="cl.1t">Seguimiento y campo</h3><p data-i18n="cl.1d">Dónde están tu gente y tus activos, ahora mismo.</p></div>
-      </div>
-      <div class="bento">
-        <a class="bcard showcase spot rv" href="demo.html?s=track">
-          <div class="preview pv pv-track" data-fy-pause aria-hidden="true">
-            <div class="pv-bar"><span class="pv-dots"><i></i><i></i><i></i></span><span class="mono">4utrack · live ops</span><span class="pv-pill mono" data-i18n="wrk.tag">demo conceptual · datos simulados</span></div>
-            <div class="tk-body">
-              <div class="tk-map">
-                <svg viewBox="0 0 340 200" preserveAspectRatio="none">
-                  <path class="tk-route r1" d="M18 168 L86 128 L138 142 L196 84 L268 96 L322 38"></path>
-                  <path class="tk-route r2" d="M30 40 L92 66 L150 52 L214 118 L292 150"></path>
-                </svg>
-                <span class="tk-fence" aria-hidden="true"></span>
-                <span class="tk-u u1"></span><span class="tk-u u2"></span><span class="tk-u u3"></span>
-                <span class="tk-chip mono">CHECK-IN · GEOFENCE 044</span>
-              </div>
-              <div class="tk-side mono">
-                <div class="tk-row"><span class="tk-dot ok"></span><span class="tk-name">M. RANGEL</span><span class="tk-role">sales · on-route</span><span class="tk-t tnum">09:42</span></div>
-                <div class="tk-row"><span class="tk-dot warn"></span><span class="tk-name">A. DUARTE</span><span class="tk-role">sales · on-site</span><span class="tk-t tnum">18 min</span></div>
-                <div class="tk-row"><span class="tk-dot ok"></span><span class="tk-name">J. OSORIO</span><span class="tk-role">tech · on-route</span><span class="tk-t tnum">10:07</span></div>
-                <div class="tk-row off"><span class="tk-dot"></span><span class="tk-name">R. LEMUS</span><span class="tk-role">sales · off-shift</span><span class="tk-t tnum">—</span></div>
-                <div class="tk-kpis tnum"><span>12/14 visits</span><span>96% route</span><span>18 min on-site</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="bcard-body">
-            <p class="bcard-sector mono"><span class="bnew mono" data-i18n="wrk.new">NUEVO</span><span data-i18n="wrk.tracks">Campo · Fuerza de ventas</span></p>
-            <h4><em class="fu">4U</em>Track</h4>
-            <p class="bcard-desc" data-i18n="wrk.trackd">Vendedores y técnicos en mapa vivo: rutas del día, check-in por geocerca y timeline por empleado. Privacidad por diseño: solo en horario laboral.</p>
-            <div class="chips mono"><span>.NET</span><span>SignalR</span><span>MapLibre GL</span><span>PostGIS</span></div>
-            <span class="bcard-view mono"><span data-i18n="wrk.view">VER FICHA</span> <svg class="ic arrow-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6"></path></svg></span>
-          </div>
-        </a>
-        <a class="bcard wide spot rv" href="demo.html?s=fleet" style="--d:.06s">
-          <div class="preview pv pv-fleet" data-fy-pause aria-hidden="true">
-            <div class="pv-bar"><span class="pv-dots"><i></i><i></i><i></i></span><span class="mono">4ufleet · telemetry</span><span class="pv-pill mono" data-i18n="wrk.tag">demo conceptual · datos simulados</span></div>
-            <div class="fl-lanes">
-              <div class="fl-lane"><span class="fl-unit"></span></div>
-              <div class="fl-lane"><span class="fl-unit d2"></span></div>
-              <div class="fl-lane"><span class="fl-unit d3"></span><span class="fl-geo"></span></div>
-              <p class="mono fl-read tnum">fix 640 ms · 2,340 units · 37 geofence alerts</p>
-            </div>
-          </div>
-          <div class="bcard-body">
-            <p class="bcard-sector mono" data-i18n="wrk.fleets">Logística · Rastreo de flotillas</p>
-            <h4><em class="fu">4U</em>Fleet</h4>
-            <p class="bcard-desc" data-i18n="wrk.fleetd">Unidades en vivo sobre mapa, geocercas con eventos y alertas con edad de fix en milisegundos.</p>
-            <div class="chips mono"><span>.NET</span><span>SignalR</span><span>MapLibre GL</span></div>
-            <span class="bcard-view mono"><span data-i18n="wrk.view">VER FICHA</span> <svg class="ic arrow-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6"></path></svg></span>
-          </div>
-        </a>
-        <a class="bcard spot rv" href="demo.html?s=map" style="--d:.12s">
-          <div class="preview pv pv-map" data-fy-pause aria-hidden="true">
-            <div class="pv-bar"><span class="pv-dots"><i></i><i></i><i></i></span><span class="mono">4umap · layers</span><span class="pv-pill mono" data-i18n="wrk.tag">demo conceptual · datos simulados</span></div>
-            <div class="mp-stack">
-              <span class="mp-layer l1"></span><span class="mp-layer l2"></span><span class="mp-layer l3"></span>
-              <p class="mono mp-read tnum">19.4326° N · 99.1332° W · 3 layers</p>
-            </div>
-          </div>
-          <div class="bcard-body">
-            <p class="bcard-sector mono" data-i18n="wrk.maps">SIG · Mapas interactivos</p>
-            <h4><em class="fu">4U</em>Map</h4>
-            <p class="bcard-desc" data-i18n="wrk.mapd">Capas conmutables, cobertura, medición en vivo y territorios sobre tus propios datos geográficos.</p>
-            <div class="chips mono"><span>React</span><span>MapLibre GL</span><span>PostGIS</span></div>
-            <span class="bcard-view mono"><span data-i18n="wrk.view">VER FICHA</span> <svg class="ic arrow-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6"></path></svg></span>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="cluster rv" data-screen-label="Cluster 02 Finanzas">
-      <div class="cluster-head">
-        <span class="cluster-no mono">02</span>
-        <div><h3 data-i18n="cl.2t">Contaduría y finanzas</h3><p data-i18n="cl.2d">Del movimiento bancario al timbre fiscal, sin hojas de cálculo.</p></div>
-      </div>
-      <div class="bento">
-        <a class="bcard spot rv" href="demo.html?s=ledger">
-          <div class="preview pv pv-ledger" data-fy-pause aria-hidden="true">
-            <div class="pv-bar"><span class="pv-dots"><i></i><i></i><i></i></span><span class="mono">4uledger · match</span><span class="pv-pill mono" data-i18n="wrk.tag">demo conceptual · datos simulados</span></div>
-            <div class="lg-cols">
-              <div class="lg-col"><i></i><i></i><i></i><i></i></div>
-              <span class="lg-pill mono tnum">Δ 0.00</span>
-              <div class="lg-col r"><i></i><i></i><i></i><i></i></div>
-              <span class="lg-beam"></span>
-            </div>
-          </div>
-          <div class="bcard-body">
-            <p class="bcard-sector mono" data-i18n="wrk.ledgers">Contaduría · Conciliación</p>
-            <h4><em class="fu">4U</em>Ledger</h4>
-            <p class="bcard-desc" data-i18n="wrk.ledgerd">Banco contra libro mayor con matching asistido, tolerancias ajustables y diferencia en cero.</p>
-            <div class="chips mono"><span>.NET</span><span>SQL Server</span><span>Azure</span></div>
-            <span class="bcard-view mono"><span data-i18n="wrk.view">VER FICHA</span> <svg class="ic arrow-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6"></path></svg></span>
-          </div>
-        </a>
-        <a class="bcard spot rv" href="demo.html?s=tax" style="--d:.06s">
-          <div class="preview pv pv-tax" data-fy-pause aria-hidden="true">
-            <div class="pv-bar"><span class="pv-dots"><i></i><i></i><i></i></span><span class="mono">4utax · cfdi</span><span class="pv-pill mono" data-i18n="wrk.tag">demo conceptual · datos simulados</span></div>
-            <div class="tx-doc">
-              <i></i><i class="short"></i><i></i><i class="short"></i>
-              <span class="tx-seal mono">UUID A1F4-88C2 ✓</span>
-            </div>
-          </div>
-          <div class="bcard-body">
-            <p class="bcard-sector mono" data-i18n="wrk.taxs">Fiscal · Facturación electrónica</p>
-            <h4><em class="fu">4U</em>Tax</h4>
-            <p class="bcard-desc" data-i18n="wrk.taxd">Emisión y timbrado con checklist, cancelaciones con motivo y órdenes de compra con aprobaciones.</p>
-            <div class="chips mono"><span>.NET</span><span>Service Bus</span><span>SQL Server</span></div>
-            <span class="bcard-view mono"><span data-i18n="wrk.view">VER FICHA</span> <svg class="ic arrow-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6"></path></svg></span>
-          </div>
-        </a>
-        <a class="bcard spot rv" href="demo.html?s=bank" style="--d:.12s">
-          <div class="preview pv pv-bank" data-fy-pause aria-hidden="true">
-            <div class="pv-bar"><span class="pv-dots"><i></i><i></i><i></i></span><span class="mono">4ubank · stream</span><span class="pv-pill mono" data-i18n="wrk.tag">demo conceptual · datos simulados</span></div>
-            <div class="bk-rows">
-              <div class="bk-win"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-              <div class="bk-bars"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
-              <p class="mono bk-read tnum">1,240 tps · score p99 0.97</p>
-            </div>
-          </div>
-          <div class="bcard-body">
-            <p class="bcard-sector mono" data-i18n="wrk.banks">Banca · Fintech</p>
-            <h4><em class="fu">4U</em>Bank</h4>
-            <p class="bcard-desc" data-i18n="wrk.bankd">Stream transaccional con reglas de fraude reconfigurables en vivo y dictamen por operación.</p>
-            <div class="chips mono"><span>.NET</span><span>Kafka</span><span>gRPC</span></div>
-            <span class="bcard-view mono"><span data-i18n="wrk.view">VER FICHA</span> <svg class="ic arrow-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6"></path></svg></span>
-          </div>
-        </a>
-      </div>
-      <div class="sage spot rv">
-        <div class="sage-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"><rect x="3" y="4" width="8" height="7"></rect><rect x="13" y="13" width="8" height="7"></rect><path d="M11 7.5h4.5V13M13 16.5H8.5V11"></path></svg>
-        </div>
-        <div class="sage-copy">
-          <p class="mono sage-k" data-i18n="sage.k">CAPACIDAD TRANSVERSAL</p>
-          <h4 data-i18n="sage.t">Integración Sage 300</h4>
-          <p data-i18n="sage.d">Pólizas, conciliación y catálogos sincronizados directo contra tu ERP. La casa lleva años integrando Sage 300 en producción; Ledger, Tax y Bank lo hablan de fábrica.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="cluster rv" data-screen-label="Cluster 03 Operación">
-      <div class="cluster-head">
-        <span class="cluster-no mono">03</span>
-        <div><h3 data-i18n="cl.3t">Operación y comercio</h3><p data-i18n="cl.3d">El resto del negocio, con la misma disciplina.</p></div>
-      </div>
-      <div class="bento">
-        <a class="bcard spot rv" href="demo.html?s=shop">
-          <div class="preview pv pv-shop" data-fy-pause aria-hidden="true">
-            <div class="pv-bar"><span class="pv-dots"><i></i><i></i><i></i></span><span class="mono">4ushop · pos</span><span class="pv-pill mono" data-i18n="wrk.tag">demo conceptual · datos simulados</span></div>
-            <div class="sh-grid">
-              <div class="sh-tiles"><i></i><i></i><i></i><i></i></div>
-              <div class="sh-ticket"><i></i><i></i><i class="hot"></i><span class="mono sh-off">OFFLINE · queue 3</span></div>
-            </div>
-          </div>
-          <div class="bcard-body">
-            <p class="bcard-sector mono" data-i18n="wrk.shops">Retail · POS e inventarios</p>
-            <h4><em class="fu">4U</em>Shop</h4>
-            <p class="bcard-desc" data-i18n="wrk.shopd">POS offline-first: vende sin red, sincroniza al volver y corta caja sin sorpresas.</p>
-            <div class="chips mono"><span>Node.js</span><span>React PWA</span><span>IndexedDB</span></div>
-            <span class="bcard-view mono"><span data-i18n="wrk.view">VER FICHA</span> <svg class="ic arrow-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6"></path></svg></span>
-          </div>
-        </a>
-        <a class="bcard spot rv" href="demo.html?s=flow" style="--d:.04s">
-          <div class="preview pv pv-flow" data-fy-pause aria-hidden="true">
-            <div class="pv-bar"><span class="pv-dots"><i></i><i></i><i></i></span><span class="mono">4uflow · scada</span><span class="pv-pill mono" data-i18n="wrk.tag">demo conceptual · datos simulados</span></div>
-            <div class="fw-chart">
-              <svg viewBox="0 0 300 110" preserveAspectRatio="none">
-                <path class="fw-th" d="M0 30 H300"></path>
-                <path class="fw-line" d="M0 78 L30 70 L60 82 L90 58 L120 66 L150 44 L180 60 L210 38 L240 52 L270 34 L300 46"></path>
-              </svg>
-              <span class="fw-alarm mono">PSI 62.4</span>
-            </div>
-          </div>
-          <div class="bcard-body">
-            <p class="bcard-sector mono" data-i18n="wrk.flows">IoT industrial · SCADA</p>
-            <h4><em class="fu">4U</em>Flow</h4>
-            <p class="bcard-desc" data-i18n="wrk.flowd">Telemetría de planta con umbrales ajustables, alarmas y replay exacto de incidentes.</p>
-            <div class="chips mono"><span>.NET</span><span>Kafka</span><span>TimescaleDB</span></div>
-            <span class="bcard-view mono"><span data-i18n="wrk.view">VER FICHA</span> <svg class="ic arrow-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6"></path></svg></span>
-          </div>
-        </a>
-        <a class="bcard spot rv" href="demo.html?s=gov" style="--d:.08s">
-          <div class="preview pv pv-gov" data-fy-pause aria-hidden="true">
-            <div class="pv-bar"><span class="pv-dots"><i></i><i></i><i></i></span><span class="mono">4ugov · trámites</span><span class="pv-pill mono" data-i18n="wrk.tag">demo conceptual · datos simulados</span></div>
-            <div class="gv-steps">
-              <div class="gv-step done"><i>✓</i></div><span class="gv-link"></span>
-              <div class="gv-step done"><i>✓</i></div><span class="gv-link"></span>
-              <div class="gv-step act"><i>3</i></div><span class="gv-link off"></span>
-              <div class="gv-step"><i>4</i></div>
-              <p class="mono gv-read tnum">FOLIO GB-2201-044</p>
-            </div>
-          </div>
-          <div class="bcard-body">
-            <p class="bcard-sector mono" data-i18n="wrk.govs">Gobierno · Trámites digitales</p>
-            <h4><em class="fu">4U</em>Gov</h4>
-            <p class="bcard-desc" data-i18n="wrk.govd">Trámites validados con folio, borrador que se reanuda y bandeja dictaminable con auditoría.</p>
-            <div class="chips mono"><span>Java · Spring</span><span>OAuth2</span><span>Kubernetes</span></div>
-            <span class="bcard-view mono"><span data-i18n="wrk.view">VER FICHA</span> <svg class="ic arrow-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6"></path></svg></span>
-          </div>
-        </a>
-        <a class="bcard spot rv" href="demo.html?s=car" style="--d:.12s">
-          <div class="preview pv pv-car" data-fy-pause aria-hidden="true">
-            <div class="pv-bar"><span class="pv-dots"><i></i><i></i><i></i></span><span class="mono">4ucar · quote</span><span class="pv-pill mono" data-i18n="wrk.tag">demo conceptual · datos simulados</span></div>
-            <div class="cr-quote">
-              <div class="cr-bars"><b style="--h:78%"></b><b style="--h:64%"></b><b style="--h:52%"></b><b style="--h:44%"></b><b style="--h:38%"></b></div>
-              <p class="mono cr-read tnum">$ 8,420 /mes · 48 meses</p>
-            </div>
-          </div>
-          <div class="bcard-body">
-            <p class="bcard-sector mono" data-i18n="wrk.cars">Automotriz · Ventas</p>
-            <h4><em class="fu">4U</em>Car</h4>
-            <p class="bcard-desc" data-i18n="wrk.card">Showroom con cotizador de amortización real por banco, plazo y enganche, y apartado con folio.</p>
-            <div class="chips mono"><span>.NET</span><span>Redis</span><span>AWS</span></div>
-            <span class="bcard-view mono"><span data-i18n="wrk.view">VER FICHA</span> <svg class="ic arrow-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6"></path></svg></span>
-          </div>
-        </a>
-        <a class="bcard spot rv" href="demo.html?s=care" style="--d:.16s">
-          <div class="preview pv pv-care" data-fy-pause aria-hidden="true">
-            <div class="pv-bar"><span class="pv-dots"><i></i><i></i><i></i></span><span class="mono">4ucare · hl7</span><span class="pv-pill mono" data-i18n="wrk.tag">demo conceptual · datos simulados</span></div>
-            <div class="ce-vitals">
-              <svg viewBox="0 0 300 80" preserveAspectRatio="none"><path class="ce-ekg" d="M0 44 L40 44 L52 44 L58 20 L64 66 L70 44 L110 44 L122 44 L128 20 L134 66 L140 44 L180 44 L192 44 L198 20 L204 66 L210 44 L250 44 L262 44 L268 20 L274 66 L280 44 L300 44"></path></svg>
-              <p class="mono ce-read tnum">72 bpm · SpO₂ 98% · HL7 1,204 msg</p>
-            </div>
-          </div>
-          <div class="bcard-body">
-            <p class="bcard-sector mono" data-i18n="wrk.cares">Salud · HL7</p>
-            <h4><em class="fu">4U</em>Care</h4>
-            <p class="bcard-desc" data-i18n="wrk.cared">Roster clínico con vitales en vivo, integraciones HL7·FHIR y auditoría de cada acceso.</p>
-            <div class="chips mono"><span>.NET</span><span>HL7 · FHIR</span><span>PostgreSQL</span></div>
-            <span class="bcard-view mono"><span data-i18n="wrk.view">VER FICHA</span> <svg class="ic arrow-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6"></path></svg></span>
-          </div>
-        </a>
-        <a class="bcard spot rv" href="demo.html?s=vault" style="--d:.2s">
-          <div class="preview pv pv-vault" data-fy-pause aria-hidden="true">
-            <div class="pv-bar"><span class="pv-dots"><i></i><i></i><i></i></span><span class="mono">4uvault · rag</span><span class="pv-pill mono" data-i18n="wrk.tag">demo conceptual · datos simulados</span></div>
-            <div class="vt-panel">
-              <div class="vt-lock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"><rect x="5" y="10.5" width="14" height="9.5"></rect><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"></path></svg></div>
-              <div class="vt-lines"><i></i><i class="cite"></i><i class="short"></i><i class="cite"></i></div>
-              <p class="mono vt-read tnum">0 datos fuera · 100% citado</p>
-            </div>
-          </div>
-          <div class="bcard-body">
-            <p class="bcard-sector mono" data-i18n="wrk.vaults">Legal · IA privada</p>
-            <h4><em class="fu">4U</em>Vault</h4>
-            <p class="bcard-desc" data-i18n="wrk.vaultd">RAG dentro de tu frontera: respuestas siempre citadas y cero datos fuera de tu infraestructura.</p>
-            <div class="chips mono"><span>FastAPI</span><span>vLLM</span><span>pgvector</span></div>
-            <span class="bcard-view mono"><span data-i18n="wrk.view">VER FICHA</span> <svg class="ic arrow-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6"></path></svg></span>
-          </div>
-        </a>
-        <a class="bcard spot rv" href="demo.html?s=turn" style="--d:.24s">
-          <div class="preview pv pv-turn" data-fy-pause aria-hidden="true">
-            <div class="pv-bar"><span class="pv-dots"><i></i><i></i><i></i></span><span class="mono">4uturn · queue</span><span class="pv-pill mono" data-i18n="wrk.tag">demo conceptual · datos simulados</span></div>
-            <div class="tn-panel">
-              <p class="tn-now mono tnum">042</p>
-              <div class="tn-dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
-              <p class="mono tn-read">now serving · window 3</p>
-            </div>
-          </div>
-          <div class="bcard-body">
-            <p class="bcard-sector mono" data-i18n="wrk.turns">Consumo · Filas en vivo</p>
-            <h4><em class="fu">4U</em>Turn</h4>
-            <p class="bcard-desc" data-i18n="wrk.turnd">Turnos en tiempo real para sucursales: la fila vive en el teléfono, no en el local.</p>
-            <div class="chips mono"><span>Node.js</span><span>WebSockets</span><span>React PWA</span></div>
-            <span class="bcard-view mono"><span data-i18n="wrk.view">VER FICHA</span> <svg class="ic arrow-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6"></path></svg></span>
-          </div>
-        </a>
-        <a class="bcard spot rv" href="demo.html?s=dev" style="--d:.28s">
-          <div class="preview pv pv-dev" data-fy-pause aria-hidden="true">
-            <div class="pv-bar"><span class="pv-dots"><i></i><i></i><i></i></span><span class="mono">4udev · ci·cd</span><span class="pv-pill mono" data-i18n="wrk.tag">demo conceptual · datos simulados</span></div>
-            <div class="dv-pipe">
-              <div class="dv-nodes"><i></i><span></span><i></i><span></span><i></i><span></span><i></i><span></span><i></i></div>
-              <p class="mono dv-read tnum">348 tests · coverage 94%</p>
-            </div>
-          </div>
-          <div class="bcard-body">
-            <p class="bcard-sector mono" data-i18n="wrk.devs">Enterprise · CI/CD</p>
-            <h4><em class="fu">4U</em>Dev</h4>
-            <p class="bcard-desc" data-i18n="wrk.devd">Pipelines, runners y calidad continua para equipos grandes que despliegan todos los días.</p>
-            <div class="chips mono"><span>Node.js</span><span>Nx Cloud</span><span>Kubernetes</span></div>
-            <span class="bcard-view mono"><span data-i18n="wrk.view">VER FICHA</span> <svg class="ic arrow-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6"></path></svg></span>
-          </div>
-        </a>
-        <a class="bcard spot rv" href="demo.html?s=date" style="--d:.32s">
-          <div class="preview pv pv-date" data-fy-pause aria-hidden="true">
-            <div class="pv-bar"><span class="pv-dots"><i></i><i></i><i></i></span><span class="mono">4udate · agenda</span><span class="pv-pill mono" data-i18n="wrk.tag">demo conceptual · datos simulados</span></div>
-            <div class="dt-week">
-              <div class="dt-grid">
-                <i></i><i class="on"></i><i></i><i class="on"></i><i></i>
-                <i class="on"></i><i></i><i class="on t2"></i><i></i><i class="on"></i>
-                <i></i><i class="on t2"></i><i></i><i></i><i class="on"></i>
-              </div>
-              <p class="mono dt-read tnum">64% ocupación · 2 sucursales</p>
-            </div>
-          </div>
-          <div class="bcard-body">
-            <p class="bcard-sector mono" data-i18n="wrk.dates">Citas · Agendamiento</p>
-            <h4><em class="fu">4U</em>Date</h4>
-            <p class="bcard-desc" data-i18n="wrk.dated">Agenda multi-sucursal con recordatorios que confirman solos y ocupación por día.</p>
-            <div class="chips mono"><span>.NET</span><span>SQL Server</span><span>WhatsApp API</span></div>
-            <span class="bcard-view mono"><span data-i18n="wrk.view">VER FICHA</span> <svg class="ic arrow-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6"></path></svg></span>
-          </div>
-        </a>
-      </div>
-    </div>
+    <div class="fact"><b class="mono" data-count="8" data-suffix="+">8+</b><span data-i18n="facts.l1">años construyendo sistemas críticos</span></div>
+    <div class="fact"><b class="mono" data-count="10" data-suffix="+">10+</b><span data-i18n="facts.l2">industrias servidas</span></div>
+    <div class="fact"><b class="mono" data-count="100" data-suffix="%">100%</b><span data-i18n="facts.l3">ingenieros senior</span></div>
+    <div class="fact"><b class="mono" data-count="24" data-suffix="/7">24/7</b><span data-i18n="facts.l4">operación y soporte</span></div>
   </div>
 </section>
-
-<section class="svc" id="capacidades" data-screen-label="Capacidades">
+<div class="ticker" aria-hidden="true" hidden><div class="track" id="tickerTrack"></div></div>
+<section class="sec" id="sistemas" data-screen-label="Sistemas">
   <div class="container">
-    <header class="sec-head rv">
-      <p class="eyebrow" data-i18n="svc.eyebrow">Capacidades</p>
-      <h2 data-i18n="svc.h2">Lo que la casa sabe hacer.</h2>
-    </header>
-    <div class="svc-grid">
-      <article class="svc-card spot rv">
-        <svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><rect x="3" y="4" width="18" height="16"></rect><path d="M3 9h18M8 4v5"></path></svg>
-        <h3 data-i18n="svc.1t">Ingeniería de producto</h3>
-        <p data-i18n="svc.1d">Plataformas web y móviles end-to-end: del modelo de datos al pixel, con entregas semanales.</p>
-      </article>
-      <article class="svc-card spot rv" style="--d:.04s">
-        <svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.4-5.7M20 3v4h-4"></path></svg>
-        <h3 data-i18n="svc.2t">Rescate de legacy</h3>
-        <p data-i18n="svc.2d">VB.NET, Delphi, AS/400: mapa de dependencias, harness de pruebas y migración incremental sin apagar la operación.</p>
-      </article>
-      <article class="svc-card spot rv" style="--d:.08s">
-        <svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><rect x="3" y="4" width="8" height="7"></rect><rect x="13" y="13" width="8" height="7"></rect><path d="M11 7.5h4.5V13M13 16.5H8.5V11"></path></svg>
-        <h3 data-i18n="svc.3t">Integraciones y ERP</h3>
-        <p data-i18n="svc.3d">Sage 300, SAT, bancos, WhatsApp Business: tus sistemas hablándose sin recapturas.</p>
-      </article>
-      <article class="svc-card spot rv" style="--d:.12s">
-        <svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><path d="M12 3 4.5 6v6c0 4.4 3.2 7.4 7.5 9 4.3-1.6 7.5-4.6 7.5-9V6Z"></path><path d="M9.5 12.2l2 2 3.5-4"></path></svg>
-        <h3 data-i18n="svc.4t">IA privada</h3>
-        <p data-i18n="svc.4d">RAG y modelos dentro de tu frontera, on-prem o en tu nube. Tus datos no entrenan a nadie.</p>
-      </article>
-      <article class="svc-card spot rv" style="--d:.16s">
-        <svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6h5"></path></svg>
-        <h3 data-i18n="svc.5t">Tiempo real</h3>
-        <p data-i18n="svc.5d">Streams, WebSockets y telemetría con latencias honestas, medidas y publicadas.</p>
-      </article>
-      <article class="svc-card spot rv" style="--d:.2s">
-        <svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><path d="M4 19 9 6l5 9 3-5 3 9"></path><rect x="2.5" y="17.5" width="3" height="3"></rect><rect x="18.5" y="3.5" width="3" height="3"></rect></svg>
-        <h3 data-i18n="svc.6t">Mapas y geointeligencia</h3>
-        <p data-i18n="svc.6d">Rastreo, geocercas, territorios y rutas: el mapa como herramienta de operación, no de adorno.</p>
-      </article>
-      <article class="svc-card spot rv" style="--d:.24s">
-        <svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><path d="M4 16.5h16M4 12h16M4 7.5h16"></path><path d="M12 4.5v-2M12 21.5v-2"></path></svg>
-        <h3 data-i18n="svc.7t">Cloud y DevOps</h3>
-        <p data-i18n="svc.7d">Azure y AWS con CI/CD, infraestructura como código y despliegues sin ventana de mantenimiento.</p>
-      </article>
-      <article class="svc-card spot rv" style="--d:.28s">
-        <svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><rect x="5" y="10.5" width="14" height="9.5"></rect><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3M12 14.5v2.5"></path></svg>
-        <h3 data-i18n="svc.8t">Seguridad y cumplimiento</h3>
-        <p data-i18n="svc.8d">OAuth2/OIDC, cifrado, auditoría por acceso y estándares por industria: HL7, PCI, SAT.</p>
-      </article>
-      <article class="svc-card spot rv" style="--d:.32s">
-        <svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"></rect><path d="M12 7.5V12l3.5 2"></path></svg>
-        <h3 data-i18n="svc.9t">Operación 24/7</h3>
-        <p data-i18n="svc.9d">Monitoreo, SLOs y respuesta a incidentes: ningún sistema se entrega y se abandona.</p>
-      </article>
+    <div class="sec-head" data-reveal>
+      <p class="kicker" data-i18n="cat.kicker">EL CATÁLOGO</p>
+      <h2 data-i18n="cat.title">Quince sistemas. Una casa.</h2>
+      <p class="lead" data-i18n="cat.sub">Cada ventana es software vivo: datos simulados, ingeniería real.</p>
     </div>
+    <div class="cluster" data-reveal><span class="kicker" data-i18n="cluster.1">01 · Seguimiento y campo</span><div class="bento" id="bento1"></div></div>
+    <div class="cluster" data-reveal>
+      <span class="kicker" data-i18n="cluster.2">02 · Contaduría y finanzas</span><div class="bento" id="bento2"></div>
+      <div class="sage">
+        <span class="fy-core nsm" aria-hidden="true"><span class="fy-mark"><span class="bk">&lt;</span><span class="b4">4U</span><span class="bs">/&gt;</span></span></span>
+        <div><p class="kicker" data-i18n="sage.kicker">CAPACIDAD TRANSVERSAL</p><h3 data-i18n="sage.title">Integración Sage 300</h3><p data-i18n="sage.copy">Pólizas, conciliación y catálogos sincronizados directo contra tu ERP. La casa lleva años integrando Sage 300 en producción; Ledger, Tax y Bank lo hablan de fábrica.</p></div>
+      </div>
+    </div>
+    <div class="cluster" data-reveal><span class="kicker" data-i18n="cluster.3">03 · Operación y comercio</span><div class="bento" id="bento3"></div></div>
   </div>
 </section>
-
+<section class="sec" id="capacidades" data-screen-label="Capacidades" style="background:var(--surface);border-block:1px solid var(--border)">
+  <div class="container">
+    <div class="sec-head" data-reveal><p class="kicker" data-i18n="cap.kicker">CAPACIDADES</p><h2 data-i18n="cap.title">Lo que la casa sabe hacer</h2></div>
+    <div class="caps" id="caps" data-reveal></div>
+  </div>
+</section>
 <section class="sec" id="seguridad" data-screen-label="Seguridad">
   <div class="container">
-    <div class="sec-card spot rv">
-      <div class="sec-copy">
-        <p class="eyebrow" data-i18n="sec.eyebrow">IA privada y seguridad</p>
-        <h2 data-i18n-html="sec.h2">Tus datos no entrenan <span class="grad">a nadie.</span></h2>
-        <p class="sec-note" data-i18n="sec.note">La IA que construimos vive dentro de tu frontera: tu infraestructura, tus llaves, tus reglas. Lo mismo aplica a este sitio: cero trackers, cero cookies de terceros.</p>
-        <p class="sec-honesty mono" data-i18n="sec.honesty">Sin teatro de insignias: mostramos arquitectura y controles reales, no certificaciones decorativas.</p>
+    <div class="sec-card" data-reveal>
+      <p class="kicker" data-i18n="sec.kicker">SEGURIDAD · IA PRIVADA</p>
+      <h2 style="margin-top:14px"><span data-i18n="sec.h1a">Tus datos no entrenan</span> <span class="grad" data-i18n="sec.h1b">a nadie.</span></h2>
+      <div class="sec-points"><ul>
+        <li data-i18n="sec.p1"></li><li data-i18n="sec.p2"></li><li data-i18n="sec.p3"></li></ul><ul>
+        <li data-i18n="sec.p4"></li><li data-i18n="sec.p5"></li><li data-i18n="sec.p6"></li></ul>
       </div>
-      <ul class="sec-points">
-        <li class="rv"><i aria-hidden="true">01</i><span data-i18n="sec.1">Modelos e índices desplegados on-prem o en tu nube, nunca en la nuestra.</span></li>
-        <li class="rv" style="--d:.04s"><i aria-hidden="true">02</i><span data-i18n="sec.2">Ningún dato tuyo entrena modelos de terceros. Contractual y técnicamente.</span></li>
-        <li class="rv" style="--d:.08s"><i aria-hidden="true">03</i><span data-i18n="sec.3">Cifrado en tránsito y en reposo; llaves bajo tu control.</span></li>
-        <li class="rv" style="--d:.12s"><i aria-hidden="true">04</i><span data-i18n="sec.4">Acceso por rol y auditoría de cada lectura, también para nosotros.</span></li>
-        <li class="rv" style="--d:.16s"><i aria-hidden="true">05</i><span data-i18n="sec.5">Respuestas de IA siempre citadas contra tus documentos fuente.</span></li>
-        <li class="rv" style="--d:.2s"><i aria-hidden="true">06</i><span data-i18n="sec.6">Aislamiento por cliente y NDA por defecto en cada proyecto.</span></li>
-      </ul>
+      <p class="teatro"><span data-i18n="sec.teatro">Sin teatro de insignias: mostramos arquitectura y controles reales, no certificaciones decorativas.</span><br><span class="mono" data-i18n="sec.site">Aplica también a este sitio: cero trackers, cero cookies de terceros.</span></p>
     </div>
   </div>
 </section>
-
-<section class="prc" id="metodo" data-screen-label="Método">
+<section class="sec" id="metodo" data-screen-label="Método" style="background:var(--surface);border-block:1px solid var(--border)">
   <div class="container">
-    <header class="sec-head rv">
-      <p class="eyebrow" data-i18n="prc.eyebrow">Método</p>
-      <h2 data-i18n="prc.h2">Cinco fases, cero sorpresas.</h2>
-    </header>
-    <ol class="prc-strip">
-      <li class="prc-step spot rv"><span class="mono prc-no">01</span><h3 data-i18n="prc.1t">Descubrimiento</h3><p data-i18n="prc.1d">Mapa del negocio y del sistema actual: qué duele, qué vale, qué se mide.</p></li>
-      <li class="prc-step spot rv" style="--d:.05s"><span class="mono prc-no">02</span><h3 data-i18n="prc.2t">Arquitectura</h3><p data-i18n="prc.2d">Decisiones documentadas, plan por fases y presupuesto cerrado por fase.</p></li>
-      <li class="prc-step spot rv" style="--d:.1s"><span class="mono prc-no">03</span><h3 data-i18n="prc.3t">Construcción</h3><p data-i18n="prc.3d">Entregas semanales con demo desde la primera semana. Sin cajas negras.</p></li>
-      <li class="prc-step spot rv" style="--d:.15s"><span class="mono prc-no">04</span><h3 data-i18n="prc.4t">Endurecimiento</h3><p data-i18n="prc.4d">Pruebas, seguridad, carga y migración de datos ensayada hasta aburrir.</p></li>
-      <li class="prc-step spot rv" style="--d:.2s"><span class="mono prc-no">05</span><h3 data-i18n="prc.5t">Operación</h3><p data-i18n="prc.5d">Monitoreo, SLOs y evolución continua. El lanzamiento es el inicio, no el final.</p></li>
-    </ol>
-  </div>
-</section>
-
-<section class="faq" id="faq" data-screen-label="FAQ">
-  <div class="container faq-grid">
-    <header class="sec-head rv">
-      <p class="eyebrow" data-i18n="faq.eyebrow">Preguntas directas</p>
-      <h2 data-i18n="faq.h2">Lo que nos preguntan antes de firmar.</h2>
-    </header>
-    <div class="faq-list rv">
-      <details class="faq-item">
-        <summary><span data-i18n="faq.1q">¿Cómo empieza un proyecto?</span><svg class="ic faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></summary>
-        <p data-i18n="faq.1a">Con un descubrimiento de dos a tres semanas: mapeamos tu operación y el sistema actual, y entregamos alcance, riesgos y presupuesto cerrado por fase. Si no seguimos, el diagnóstico es tuyo.</p>
-      </details>
-      <details class="faq-item">
-        <summary><span data-i18n="faq.2q">¿Trabajan con sistemas heredados sin documentación?</span><svg class="ic faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></summary>
-        <p data-i18n="faq.2a">Es nuestra especialidad. Construimos el mapa de dependencias, generamos un harness de pruebas sobre el comportamiento real y migramos por módulos, sin apagar la operación un solo día.</p>
-      </details>
-      <details class="faq-item">
-        <summary><span data-i18n="faq.3q">¿El código es mío?</span><svg class="ic faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></summary>
-        <p data-i18n="faq.3a">Sí. Repositorio, propiedad intelectual y documentación a tu nombre desde el primer commit. Sin licencias ocultas ni dependencia forzada de nosotros.</p>
-      </details>
-      <details class="faq-item">
-        <summary><span data-i18n="faq.4q">¿Pueden trabajar dentro de mi infraestructura?</span><svg class="ic faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></summary>
-        <p data-i18n="faq.4a">Sí: on-prem o en tu nube, con tus políticas de acceso y auditoría. La IA privada nació exactamente de ese requisito.</p>
-      </details>
-      <details class="faq-item">
-        <summary><span data-i18n="faq.5q">¿Cuánto tarda un sistema?</span><svg class="ic faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></summary>
-        <p data-i18n="faq.5a">Depende del alcance, y te lo decimos con fases, no con promesas: un piloto operable típico sale en ocho a doce semanas; cada fase siguiente tiene fecha y entregable propio.</p>
-      </details>
-      <details class="faq-item">
-        <summary><span data-i18n="faq.6q">¿Qué pasa después del lanzamiento?</span><svg class="ic faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></summary>
-        <p data-i18n="faq.6a">Operación 24/7 con monitoreo, SLOs y plan de evolución. Ningún sistema se entrega y se abandona; el nuestro tampoco.</p>
-      </details>
+    <div class="sec-head" data-reveal><p class="kicker" data-i18n="met.kicker">MÉTODO</p><h2 data-i18n="met.title">Cinco fases, cero sorpresas.</h2></div>
+    <div class="steps" data-reveal>
+      <div class="step" style="--ci:0"><i>01</i><h3 data-i18n="met.1.t"></h3><p data-i18n="met.1.d"></p></div>
+      <div class="step" style="--ci:1"><i>02</i><h3 data-i18n="met.2.t"></h3><p data-i18n="met.2.d"></p></div>
+      <div class="step" style="--ci:2"><i>03</i><h3 data-i18n="met.3.t"></h3><p data-i18n="met.3.d"></p></div>
+      <div class="step" style="--ci:3"><i>04</i><h3 data-i18n="met.4.t"></h3><p data-i18n="met.4.d"></p></div>
+      <div class="step" style="--ci:4"><i>05</i><h3 data-i18n="met.5.t"></h3><p data-i18n="met.5.d"></p></div>
     </div>
   </div>
 </section>
-
-<section class="cta" id="contacto" data-screen-label="Contacto">
+<section class="sec" id="faq" data-screen-label="FAQ">
   <div class="container">
-    <div class="cta-card spot rv">
-      <div class="cta-copy">
-        <p class="eyebrow" data-i18n="cta.eyebrow">Contacto</p>
-        <h2 data-i18n-html="cta.h2">Cuéntanos qué necesita <span class="grad">tu operación.</span></h2>
-        <p class="cta-note" data-i18n="cta.note">Respondemos en horas hábiles, con ingenieros, no con vendedores. Si traes un sistema heredado a cuestas, mejor todavía.</p>
-        <a class="cta-book" href="mailto:eddy.penaloza@fouryou.io">
-          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><rect x="3" y="5" width="18" height="14"></rect><path d="m3.5 6.5 8.5 7 8.5-7"></path></svg>
-          <span data-i18n="cta.book">Escríbenos directo</span>
-          <strong class="mono">eddy.penaloza@fouryou.io</strong>
-        </a>
-        <p class="cta-booknote mono" data-i18n="cta.booknote">o agenda una prueba guiada de cualquier sistema del catálogo</p>
+    <div class="sec-head" data-reveal><p class="kicker" data-i18n="faq.kicker">FAQ</p><h2 data-i18n="faq.title">Lo que preguntan antes de firmar</h2></div>
+    <div class="faq" data-reveal>
+      <details><summary data-i18n="faq.1.q"></summary><p data-i18n="faq.1.a"></p></details>
+      <details><summary data-i18n="faq.2.q"></summary><p data-i18n="faq.2.a"></p></details>
+      <details><summary data-i18n="faq.3.q"></summary><p data-i18n="faq.3.a"></p></details>
+      <details><summary data-i18n="faq.4.q"></summary><p data-i18n="faq.4.a"></p></details>
+      <details><summary data-i18n="faq.5.q"></summary><p data-i18n="faq.5.a"></p></details>
+      <details><summary data-i18n="faq.6.q"></summary><p data-i18n="faq.6.a"></p></details>
+    </div>
+  </div>
+</section>
+<section class="sec" id="contacto" data-screen-label="Contacto" style="background:var(--surface);border-top:1px solid var(--border)">
+  <div class="container">
+    <div class="sec-head" data-reveal><p class="kicker" data-i18n="con.kicker">CONTACTO</p><h2 data-i18n="con.title">Hablemos de tu sistema</h2><p class="lead" data-i18n="con.copy">Respondemos en horas hábiles, con ingenieros, no con vendedores. Si traes un sistema heredado a cuestas, mejor todavía.</p></div>
+    <div class="contact" data-reveal>
+      <div class="con-card">
+        <p class="kicker" data-i18n="con.direct">Correo directo</p>
+        <a class="mail" href="mailto:eddy.penaloza@fouryou.io">eddy.penaloza@fouryou.io</a>
+        <p class="tagline" style="margin-top:26px">Technology Built For You.</p>
       </div>
-      <form class="cta-form" id="contactForm" novalidate>
-        <div class="field"><label for="fName" data-i18n="cta.fname">Nombre</label><input id="fName" name="name" type="text" autocomplete="name" required></div>
-        <div class="field"><label for="fCompany" data-i18n="cta.fcompany">Empresa</label><input id="fCompany" name="company" type="text" autocomplete="organization" required></div>
-        <div class="field"><label for="fEmail" data-i18n="cta.femail">Correo</label><input id="fEmail" name="email" type="email" autocomplete="email" required></div>
-        <div class="field"><label for="fDetail" data-i18n="cta.fdetail">¿Qué sistema necesitas o qué duele hoy?</label><textarea id="fDetail" name="detail" rows="4" required></textarea></div>
-        <p class="form-err mono" id="formErr" hidden data-i18n="cta.err">Completa los campos marcados.</p>
-        <!-- TODO: conectar Formspree o backend propio; hoy el envío abre el correo del visitante vía mailto: -->
-        <button type="submit" class="btn2"><span data-i18n="cta.send">Enviar mensaje</span><svg class="ic arrow-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M14 6l6 6-6 6"></path></svg></button>
-        <p class="form-hint mono" data-i18n="cta.hint">El formulario abre tu correo; nada se envía a servidores de terceros.</p>
-      </form>
+      <div class="con-card">
+        <form id="conForm">
+          <label><span data-i18n="con.f.nombre">Nombre</span><input name="nombre" required placeholder=" "></label>
+          <label><span data-i18n="con.f.empresa">Empresa</span><input name="empresa" placeholder=" "></label>
+          <label><span data-i18n="con.f.correo">Correo</span><input name="correo" type="email" required placeholder=" "></label>
+          <label><span data-i18n="con.f.msg">Cuéntanos del sistema (nuevo o heredado)</span><textarea name="msg" required placeholder=" "></textarea></label>
+          <button class="btn btn-primary" type="submit" data-i18n="con.submit">Abrir correo prellenado →</button>
+          <p class="con-note" data-i18n="con.note">Front-only: nada se envía a servidores de terceros.</p>
+        </form>
+      </div>
     </div>
   </div>
 </section>
 </main>
-
-<footer class="footer" data-screen-label="Footer">
-  <div class="container">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <a class="brand-lockup" href="#" aria-label="FOURYOU">
-          <svg class="mark" viewBox="0 0 96 96" width="22" height="22" fill="none" aria-hidden="true">
-            <path d="M24 30 L8 48 L24 66"></path>
-            <path d="M72 30 L88 48 L72 66"></path>
-            <path class="mk-4" d="M46 30 L34 50 H52"></path>
-            <path class="mk-4" d="M46 42 V66"></path>
-            <path class="mk-s" d="M64 30 L54 66"></path>
-          </svg>
-          <span class="wordmark">FOURYOU</span>
-        </a>
-        <p class="foot-tagline">Technology Built For You.</p>
-      </div>
-      <div class="foot-col">
-        <h4 data-i18n="foot.sys">Sistemas</h4>
-        <ul>
-          <li><a href="demo.html?s=track"><em class="fu">4U</em>Track</a></li>
-          <li><a href="demo.html?s=fleet"><em class="fu">4U</em>Fleet</a></li>
-          <li><a href="demo.html?s=ledger"><em class="fu">4U</em>Ledger</a></li>
-          <li><a href="demo.html?s=tax"><em class="fu">4U</em>Tax</a></li>
-          <li><a href="demo.html?s=bank"><em class="fu">4U</em>Bank</a></li>
-          <li><a href="demo.html?s=vault"><em class="fu">4U</em>Vault</a></li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <h4 data-i18n="foot.co">Compañía</h4>
-        <ul>
-          <li><a href="#capacidades" data-i18n="nav.cap">Capacidades</a></li>
-          <li><a href="#seguridad" data-i18n="nav.sec">Seguridad</a></li>
-          <li><a href="#metodo" data-i18n="nav.met">Método</a></li>
-          <li><a href="#contacto" data-i18n="nav.cta">Contacto</a></li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <h4 data-i18n="foot.legalT">Legal</h4>
-        <ul>
-          <li><a href="privacidad.html" data-i18n="foot.priv">Aviso de privacidad</a></li>
-          <li><a href="terminos.html" data-i18n="foot.terms">Términos de servicio</a></li>
-        </ul>
-      </div>
+<footer>
+  <div class="container foot">
+    <div>
+      <a class="fy-brand" href="#top" aria-label="FOURYOU"><span class="fy-core nsm" aria-hidden="true"><span class="fy-mark"><span class="bk">&lt;</span><span class="b4">4U</span><span class="bs">/&gt;</span></span></span><span class="fy-word">FOURYOU<i>software</i></span></a>
+      <p class="foot-tag">Technology Built For You.</p>
     </div>
-    <div class="foot-bottom">
-      <p><span data-i18n="foot.rights">© 2026 FOURYOU. Ingeniería de software.</span></p>
-      <div class="langseg" role="group" aria-label="Idioma" data-i18n-aria="a11y.lang">
-        <button type="button" data-setlang="es" aria-pressed="true">ES</button>
-        <button type="button" data-setlang="en" aria-pressed="false">EN</button>
-        <button type="button" data-setlang="pt" aria-pressed="false">PT</button>
-      </div>
-    </div>
+    <div><h4 data-i18n="foot.sistemas">Sistemas</h4><ul id="footSys"></ul></div>
+    <div><h4 data-i18n="foot.compania">Compañía</h4><ul>
+      <li><a href="#capacidades" data-i18n="nav.capacidades">Capacidades</a></li>
+      <li><a href="#metodo" data-i18n="nav.metodo">Método</a></li>
+      <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+      <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
+    </ul></div>
+    <div><h4 data-i18n="foot.legal">Legal</h4><ul>
+      <li><a href="privacidad.html" data-i18n="foot.privacidad">Privacidad</a></li>
+      <li><a href="terminos.html" data-i18n="foot.terminos">Términos</a></li>
+    </ul></div>
   </div>
+  <div class="container foot-base"><span data-i18n="foot.rights">© 2026 FOURYOU Software</span><span class="mono" style="color:var(--acc)">&lt;4/&gt;</span></div>
 </footer>
-
-<div class="mobile-cta" id="mobileCta">
-  <a class="btn2" href="#contacto" data-i18n="hero.cta2">Hablar con ingeniería</a>
-</div>
-
 <script src="js/fy-motion.js"></script>
-<script src="js/theme.js"></script>
 <script src="js/i18n.js"></script>
+<script src="js/scenes.js"></script>
 <script src="js/site.js"></script>
+<script src="tools/verify.js"></script>
 </body>
 </html>
