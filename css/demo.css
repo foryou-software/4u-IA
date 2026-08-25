@@ -42,6 +42,8 @@
 .dcard h3{font-size:1.2rem;margin-bottom:8px}
 .dcard p{font-size:.88rem;color:var(--muted)}
 .dcard .btn{margin-top:18px}
+.dcard .dact{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.dcard .dact .btn{margin-top:0}
 .dcard.illus{border-left:3px solid var(--brand-500)}
 .dcard.illus .kicker{display:block;margin-bottom:10px}
 .dnext{display:flex;justify-content:flex-end;padding-bottom:40px}

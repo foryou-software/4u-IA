@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4ULedger — demo interactivo · FOURYOU</title>
+  <script>document.documentElement.dataset.theme = localStorage.getItem("fy-theme") || "dark";</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="demos.css">
+</head>
+<body>
+
+  <header class="nav scrolled">
+    <a class="nav-logo" href="../demo.html?s=ledger" aria-label="Volver a 4ULedger">
+      <svg class="mark" viewBox="0 0 96 96" width="24" height="24" fill="none" aria-hidden="true">
+        <path d="M24 30 L8 48 L24 66"/><path d="M72 30 L88 48 L72 66"/>
+        <path class="mk-4" d="M46 30 L34 50 H52"/><path class="mk-4" d="M46 42 V66"/>
+        <path class="mk-s" d="M64 30 L54 66"/>
+      </svg>
+      <span class="wordmark">FOURYOU</span>
+      <span class="word-sub mono">4ULedger</span>
+    </a>
+    <div class="nav-actions" style="margin-left:auto">
+      <a class="ctl" href="../demo.html?s=ledger" data-t="nav">← Ficha del sistema</a>
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">
+        <span data-lang-opt="en">EN</span><span class="lang-sep">/</span><span data-lang-opt="es" class="on">ES</span>
+      </button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar tema" aria-pressed="false">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle class="sun-core" cx="12" cy="12" r="4.2"/>
+          <g class="sun-rays"><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2 19 19M19 5l-1.8 1.8M6.8 17.2 5 19"/></g>
+          <path class="moon" d="M20 13.2A8.1 8.1 0 0 1 10.8 4 8.1 8.1 0 1 0 20 13.2Z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="app">
+    <div class="app-bar">
+      <div class="app-title">
+        <h1><em class="fu">4U</em>Ledger</h1>
+        <span class="mono" data-t="sub">MESA DE CONCILIACIÓN · CIERRE MARZO</span>
+      </div>
+      <div class="app-controls">
+        <button class="ctl" id="btnAdd" type="button" data-t="addMv">+ Movimiento</button>
+        <button class="ctl on" id="btnRun" type="button"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.4-5.7L20 8.5"/><path d="M20 4v4.5h-4.5"/></svg> <span data-t="run">Correr matching</span></button>
+        <label class="ctl" for="rngDays"><span data-t="tolD">± días</span>
+          <input id="rngDays" type="range" min="0" max="5" step="1" value="2">
+          <b id="valDays" class="mono">2</b>
+        </label>
+        <label class="ctl" for="rngAmt"><span data-t="tolA">± monto</span>
+          <input id="rngAmt" type="range" min="0" max="50" step="5" value="10">
+          <b id="valAmt" class="mono">$10</b>
+        </label>
+        <button class="ctl" id="btnExport" type="button"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5V15"/><path d="m7 10.5 5 5 5-5"/><path d="M4 17.5V19a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 20 19v-1.5"/></svg> <span data-t="export">Exportar CSV</span></button>
+      </div>
+    </div>
+
+    <div class="app-main">
+      <div class="app-canvas" style="overflow:auto; max-height: calc(100vh - 150px)">
+        <div class="wb">
+          <div class="wb-filters">
+            <button class="ctl on" data-f="all" type="button" data-t="fAll">Todos</button>
+            <button class="ctl" data-f="pend" type="button" data-t="fPend">Pendientes</button>
+            <button class="ctl" data-f="done" type="button" data-t="fDone">Conciliados</button>
+            <span class="diff-pill mono" id="diffPill">Δ $0.00</span>
+          </div>
+          <div class="wb-col">
+            <div class="wb-head"><h2 data-t="colBank">ESTADO DE CUENTA · BANCO</h2><span class="tot mono" id="totBank">$0</span></div>
+            <div id="colBank"></div>
+            <div class="mgrp">
+              <button class="mgrp-toggle" id="tgBank" type="button"><span data-t="grpDone">CONCILIADOS</span><span class="mono" style="display:inline-flex;align-items:center;gap:5px"><span id="nBank">0</span> <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
+              <div class="mgrp-body" id="grpBank" hidden></div>
+            </div>
+          </div>
+          <div class="wb-col">
+            <div class="wb-head"><h2 data-t="colGl">CONTABILIDAD · PÓLIZAS</h2><span class="tot mono" id="totGl">$0</span></div>
+            <div id="colGl"></div>
+            <div class="mgrp">
+              <button class="mgrp-toggle" id="tgGl" type="button"><span data-t="grpDone">CONCILIADOS</span><span class="mono" style="display:inline-flex;align-items:center;gap:5px"><span id="nGl">0</span> <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
+              <div class="mgrp-body" id="grpGl" hidden></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="app-side">
+        <div class="canvas-card donut-wrap">
+          <svg viewBox="0 0 120 120" role="img" aria-label="Porcentaje conciliado">
+            <circle class="donut-track" cx="60" cy="60" r="50" fill="none" stroke-width="10"/>
+            <circle class="donut-fill" id="donut" cx="60" cy="60" r="50" fill="none" stroke-width="10"
+                    stroke-linecap="butt" stroke-dasharray="314.16" stroke-dashoffset="314.16"
+                    transform="rotate(-90 60 60)"/>
+            <text class="donut-num" id="donutNum" x="60" y="66" text-anchor="middle">0%</text>
+          </svg>
+        </div>
+        <div class="kpis">
+          <div class="kpi"><b id="kMatched">0</b><span data-t="kMatched">CONCILIADOS</span></div>
+          <div class="kpi"><b id="kPend">0</b><span data-t="kPend">PENDIENTES</span></div>
+          <div class="kpi"><b id="kAdj">0</b><span data-t="kAdj">AJUSTES</span></div>
+          <div class="kpi"><b id="kDiff">$0</b><span data-t="kDiff">DIF. NETA</span></div>
+        </div>
+        <p class="feed-title mono" data-t="feedT">BITÁCORA</p>
+        <div class="feed" id="feed"></div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Explain-difference modal -->
+  <div class="modal-bg" id="modalBg">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" tabindex="-1">
+      <h2 id="mTitle" data-t="mTitle">Explicar diferencia</h2>
+      <p class="demo-note" id="mDetail"></p>
+      <div class="opts">
+        <button class="ctl" data-reason="fee" type="button" data-t="rFee">Comisión bancaria</button>
+        <button class="ctl" data-reason="timing" type="button" data-t="rTiming">Diferencia de fecha (tránsito)</button>
+        <button class="ctl" data-reason="error" type="button" data-t="rError">Error de captura → generar ajuste</button>
+      </div>
+    </div>
+  </div>
+
+  <span class="demo-ribbon mono" data-t="ribbon">DEMO CONCEPTUAL · DATOS SIMULADOS</span>
+
+  <script src="../fy-motion.js" defer></script>
+  <script src="ledger.js" defer></script>
+</body>
+</html>

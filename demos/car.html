@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4UCar — demo interactivo · FOURYOU</title>
+  <script>document.documentElement.dataset.theme = localStorage.getItem("fy-theme") || "dark";</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="demos.css">
+</head>
+<body>
+  <header class="nav scrolled">
+    <a class="nav-logo" href="../demo.html?s=car" aria-label="Volver a 4UCar">
+      <svg class="mark" viewBox="0 0 96 96" width="24" height="24" fill="none" aria-hidden="true">
+        <path d="M24 30 L8 48 L24 66"/><path d="M72 30 L88 48 L72 66"/>
+        <path class="mk-4" d="M46 30 L34 50 H52"/><path class="mk-4" d="M46 42 V66"/>
+        <path class="mk-s" d="M64 30 L54 66"/>
+      </svg>
+      <span class="wordmark">FOURYOU</span>
+      <span class="word-sub mono">4UCar</span>
+    </a>
+    <div class="nav-actions" style="margin-left:auto">
+      <a class="ctl" href="../demo.html?s=car" data-t="nav">← Ficha del sistema</a>
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">
+        <span data-lang-opt="en">EN</span><span class="lang-sep">/</span><span data-lang-opt="es" class="on">ES</span>
+      </button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar tema" aria-pressed="false">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle class="sun-core" cx="12" cy="12" r="4.2"/>
+          <g class="sun-rays"><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2 19 19M19 5l-1.8 1.8M6.8 17.2 5 19"/></g>
+          <path class="moon" d="M20 13.2A8.1 8.1 0 0 1 10.8 4 8.1 8.1 0 1 0 20 13.2Z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+  <div class="app">
+    <div class="app-bar">
+      <div class="app-title"><h1><em class="fu">4U</em>Car</h1><span class="mono" data-t="sub">SHOWROOM · GRUPO DEMO</span></div>
+      <div class="app-controls"><div class="cat-chips" id="typeChips" style="margin:0"></div></div>
+    </div>
+    <div class="app-main">
+      <div class="app-canvas" style="overflow:auto; padding: var(--s3);"><div class="car-grid" id="carGrid"></div></div>
+      <aside class="app-side">
+        <p class="feed-title mono" data-t="qT">COTIZADOR</p>
+        <div class="canvas-card" id="quoteCard">
+          <p class="demo-note" id="qCar" data-t="qPick">Selecciona una unidad del showroom.</p>
+          <div id="qBody" hidden>
+            <label class="rng-l"><span class="rv2"><span data-t="qDown">Enganche</span><b id="vDown">20%</b></span>
+              <input id="rngDown" type="range" min="10" max="60" step="5" value="20"></label>
+            <label class="rng-l"><span class="rv2"><span data-t="qTerm">Plazo</span><b id="vTerm">48 m</b></span>
+              <input id="rngTerm" type="range" min="12" max="72" step="12" value="48"></label>
+            <label class="frm-l"><span data-t="qBank">Banco</span>
+              <select id="selBank"><option>Banco A · 12.9%</option><option>Banco B · 13.8%</option><option>Financiera · 15.2%</option></select></label>
+            <p class="canvas-cap mono" data-t="qMo">MENSUALIDAD ESTIMADA</p>
+            <div class="quote-row">
+              <b class="quote-num" id="qNum">$0</b>
+              <svg class="tps-gauge quote-gauge" viewBox="0 0 100 58" aria-hidden="true">
+                <path class="tg-track" d="M10 52 A42 42 0 0 1 90 52"/>
+                <g class="tg-needle" id="qNeedle"><line x1="50" y1="52" x2="50" y2="16"/></g>
+                <rect class="tg-hub" x="46.5" y="48.5" width="7" height="7" rx="2.4"/>
+              </svg>
+            </div>
+            <div class="opts" style="margin-top:12px">
+              <button class="btn btn-primary" id="btnApart" type="button" data-t="qApart">Apartar unidad</button>
+            </div>
+          </div>
+        </div>
+  <div class="kpis"><div class="kpi"><b id="kStock">0</b><span data-t="kStock">UNIDADES EN PISO</span></div><div class="kpi"><b id="kQuotes">0</b><span data-t="kQuotes">COTIZACIONES HOY</span></div><div class="kpi"><b id="kApart">0</b><span data-t="kApart">APARTADAS</span></div><div class="kpi"><b id="kConv">—</b><span data-t="kConv">CONVERSIÓN</span></div></div><p class="feed-title mono" data-t="feedT">ACTIVIDAD</p><div class="feed" id="feed"></div></aside>
+    </div>
+  </div>
+  
+  <div class="modal-bg" id="modalBg">
+    <div class="modal">
+      <div class="success-view" style="padding:8px 0">
+        <div class="bigcheck">✓</div>
+        <h2 data-t="mOk">Unidad apartada</h2>
+        <p class="folio" id="mFolio">AP-0000</p>
+        <p class="demo-note" data-t="mOkN">Un asesor confirmará tu cita de entrega. El apartado es válido por 48 horas.</p>
+        <div class="opts" style="justify-content:center"><button class="ctl" id="mClose" type="button" data-t="mBack">Volver</button></div>
+      </div>
+    </div>
+  </div>
+  <span class="demo-ribbon mono" data-t="ribbon">DEMO CONCEPTUAL · DATOS SIMULADOS</span>
+  
+  <script src="../fy-motion.js" defer></script>
+  <script src="car.js" defer></script>
+</body>
+</html>

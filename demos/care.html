@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4UCare — demo interactivo · FOURYOU</title>
+  <script>document.documentElement.dataset.theme = localStorage.getItem("fy-theme") || "dark";</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="demos.css">
+</head>
+<body>
+  <header class="nav scrolled">
+    <a class="nav-logo" href="../demo.html?s=care" aria-label="Volver a 4UCare">
+      <svg class="mark" viewBox="0 0 96 96" width="24" height="24" fill="none" aria-hidden="true">
+        <path d="M24 30 L8 48 L24 66"/><path d="M72 30 L88 48 L72 66"/>
+        <path class="mk-4" d="M46 30 L34 50 H52"/><path class="mk-4" d="M46 42 V66"/>
+        <path class="mk-s" d="M64 30 L54 66"/>
+      </svg>
+      <span class="wordmark">FOURYOU</span>
+      <span class="word-sub mono">4UCare</span>
+    </a>
+    <div class="nav-actions" style="margin-left:auto">
+      <a class="ctl" href="../demo.html?s=care" data-t="nav">← Ficha del sistema</a>
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">
+        <span data-lang-opt="en">EN</span><span class="lang-sep">/</span><span data-lang-opt="es" class="on">ES</span>
+      </button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar tema" aria-pressed="false">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle class="sun-core" cx="12" cy="12" r="4.2"/>
+          <g class="sun-rays"><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2 19 19M19 5l-1.8 1.8M6.8 17.2 5 19"/></g>
+          <path class="moon" d="M20 13.2A8.1 8.1 0 0 1 10.8 4 8.1 8.1 0 1 0 20 13.2Z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+  <div class="app">
+    <div class="app-bar">
+      <div class="app-title"><h1><em class="fu">4U</em>Care</h1><span class="mono" data-t="sub">MONITOREO CLÍNICO · PISO 4</span></div>
+      <div class="app-controls"><button class="ctl danger" id="btnEvent" type="button">⚠ <span data-t="evt">Simular taquicardia</span></button></div>
+    </div>
+    <div class="app-main">
+      <div class="app-canvas" style="overflow:auto; padding: var(--s3);">
+        <div class="alarm-banner" id="alarm">⚠ <span id="alarmTxt">FC sobre umbral</span></div>
+        <div class="vitals">
+          <div class="vit" id="vHr"><b>—</b><span data-t="vHr">FRECUENCIA CARDIACA</span></div>
+          <div class="vit" id="vSp"><b>—</b><span data-t="vSp">SpO₂</span></div>
+          <div class="vit" id="vTp"><b>—</b><span data-t="vTp">TEMPERATURA</span></div>
+        </div>
+        <div class="canvas-card" style="margin-bottom:12px">
+          <p class="canvas-cap mono" data-t="ekgT">EKG · DERIVACIÓN II</p>
+          <canvas id="cv" height="120"></canvas>
+        </div>
+        <p class="canvas-cap mono" data-t="tlT">EXPEDIENTE · LÍNEA DE TIEMPO</p>
+        <div class="tl" id="tl"></div>
+  </div>
+      <aside class="app-side"><p class="feed-title mono" data-t="ptT">PACIENTES · PISO 4</p><div class="pt-list" id="ptList"></div><div class="kpis"><div class="kpi"><b id="kPts">4</b><span data-t="kPts">MONITOREADOS</span></div><div class="kpi"><b id="kOk">4</b><span data-t="kOk">ESTABLES</span></div><div class="kpi"><b id="kAcc">100%</b><span data-t="kAcc">LECTURAS AUDITADAS</span></div><div class="kpi alert"><b id="kAl">0</b><span data-t="kAl">ALARMAS TURNO</span></div></div><p class="feed-title mono" data-t="hlT">PUENTE HL7 · MENSAJES</p><div class="hl7-strip" data-fy-pause><div class="hl7-node"><span>LIS</span><b id="hlLis">0</b></div><div class="hl7-lane"><i></i></div><div class="hl7-node"><span>HIS</span><b id="hlHis">0</b></div><div class="hl7-lane l2"><i></i></div><div class="hl7-node"><span data-t="hlRx">FARMACIA</span><b id="hlFar">0</b></div></div><p class="feed-title mono" data-t="feedT">ACTIVIDAD</p><div class="feed" id="feed"></div></aside>
+    </div>
+  </div>
+  
+  <span class="demo-ribbon mono" data-t="ribbon">DEMO CONCEPTUAL · DATOS SIMULADOS</span>
+  
+  <script src="../fy-motion.js" defer></script>
+  <script src="care.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4UTax — demo interactivo · FOURYOU</title>
+  <script>document.documentElement.dataset.theme = localStorage.getItem("fy-theme") || "dark";</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="demos.css">
+</head>
+<body>
+  <header class="nav scrolled">
+    <a class="nav-logo" href="../demo.html?s=tax" aria-label="Volver a 4UTax">
+      <svg class="mark" viewBox="0 0 96 96" width="24" height="24" fill="none" aria-hidden="true">
+        <path d="M24 30 L8 48 L24 66"/><path d="M72 30 L88 48 L72 66"/>
+        <path class="mk-4" d="M46 30 L34 50 H52"/><path class="mk-4" d="M46 42 V66"/>
+        <path class="mk-s" d="M64 30 L54 66"/>
+      </svg>
+      <span class="wordmark">FOURYOU</span>
+      <span class="word-sub mono">4UTax</span>
+    </a>
+    <div class="nav-actions" style="margin-left:auto">
+      <a class="ctl" href="../demo.html?s=tax" data-t="nav">← Ficha del sistema</a>
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">
+        <span data-lang-opt="en">EN</span><span class="lang-sep">/</span><span data-lang-opt="es" class="on">ES</span>
+      </button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar tema" aria-pressed="false">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle class="sun-core" cx="12" cy="12" r="4.2"/>
+          <g class="sun-rays"><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2 19 19M19 5l-1.8 1.8M6.8 17.2 5 19"/></g>
+          <path class="moon" d="M20 13.2A8.1 8.1 0 0 1 10.8 4 8.1 8.1 0 1 0 20 13.2Z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="app">
+    <div class="app-bar">
+      <div class="app-title">
+        <h1><em class="fu">4U</em>Tax</h1>
+        <span class="mono" data-t="sub">EMISIÓN Y TIMBRADO · CFDI</span>
+      </div>
+      <div class="app-controls"><span class="ctl on" style="cursor:default">● <span data-t="pac">PAC-1 en línea</span></span></div>
+    </div>
+    <div class="app-main">
+      <div class="app-canvas" style="overflow:auto; padding: var(--s3);">
+        <div class="tabs" role="tablist">
+          <button class="tab on" id="tb0" role="tab" data-t="tab0">Órdenes de compra</button>
+          <button class="tab" id="tb1" role="tab" data-t="tab1">Emitir</button>
+          <button class="tab" id="tb2" role="tab" data-t="tab2">Comprobantes</button>
+          <button class="tab" id="tb3" role="tab" data-t="tab3">Reportes</button>
+        </div>
+        <div class="tabpanel" id="tp0">
+          <table class="tx-table"><thead><tr>
+            <th data-t="ocId">OC</th><th data-t="ocProv">PROVEEDOR</th><th data-t="ocAmt">MONTO</th><th data-t="ocArea">ETAPA ACTUAL</th><th data-t="thEdo">ESTADO</th>
+          </tr></thead><tbody id="ocBody"></tbody></table>
+        </div>
+        <div class="tabpanel" id="tp1" hidden>
+        <div class="canvas-card" style="margin-bottom:14px">
+          <p class="canvas-cap mono" data-t="fTitle">NUEVA FACTURA</p>
+          <div class="frm">
+            <div class="frow2">
+              <label><span data-t="fRfc">RFC receptor</span><input id="fRfc" placeholder="XAXX010101000" maxlength="13"></label>
+              <label><span data-t="fUso">Uso CFDI</span>
+                <select id="fUso"><option>G03 — Gastos en general</option><option>G01 — Adquisición de mercancías</option><option>P01 — Por definir</option></select>
+              </label>
+            </div>
+            <div id="rows"></div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap">
+              <button class="ctl" id="btnRow" type="button">+ <span data-t="fAdd">Agregar concepto</span></button>
+              <button class="ctl" id="btnSample" type="button" data-t="fSample">Datos de ejemplo</button>
+            </div>
+            <div class="tots mono">
+              <span data-t="tSub">Subtotal</span><b id="tSub">$0.00</b>
+              <span>IVA 16%</span><b id="tIva">$0.00</b>
+              <span data-t="tTot">Total</span><b id="tTot" class="big">$0.00</b>
+            </div>
+            <button class="btn btn-primary" id="btnStamp" type="button" data-t="fStamp">Timbrar factura</button>
+          </div>
+        </div>
+        </div>
+        <div class="tabpanel" id="tp2" hidden>
+          <input class="search-in mono" id="q" data-ph="qPh" placeholder="Buscar por UUID o RFC…">
+          <p class="canvas-cap mono" data-t="tblT">COMPROBANTES EMITIDOS</p>
+        <table class="tx-table"><thead><tr>
+          <th>UUID</th><th data-t="thRfc">RECEPTOR</th><th data-t="thTot">TOTAL</th><th data-t="thHr">HORA</th><th data-t="thEdo">ESTADO</th><th>XML</th><th></th>
+        </tr></thead><tbody id="cfdiBody"></tbody></table>
+  
+        </div>
+        <div class="tabpanel" id="tp3" hidden>
+          <div class="canvas-card" style="margin-bottom:12px">
+            <p class="canvas-cap mono" data-t="repD">EMISIÓN POR DÍA · ÚLTIMOS 7</p>
+            <canvas id="cvDays" height="110"></canvas>
+          </div>
+          <div class="canvas-card">
+            <p class="canvas-cap mono" data-t="repR">TOP RECEPTORES DEL MES</p>
+            <div id="topRfc"></div>
+          </div>
+        </div>
+      </div>
+      <aside class="app-side"><div class="kpis"><div class="kpi"><b id="kStamped">0</b><span data-t="kStamped">TIMBRADAS HOY</span></div><div class="kpi"><b id="kOk">100%</b><span data-t="kOk">ÉXITO 1er INTENTO</span></div><div class="kpi"><b id="kAvg">—</b><span data-t="kAvg">TIEMPO PROMEDIO</span></div><div class="kpi alert"><b id="kCanc">0</b><span data-t="kCanc">CANCELADAS</span></div></div><div class="canvas-card" id="checkCard" hidden><p class="canvas-cap mono" data-t="chkT">VALIDANDO Y TIMBRANDO</p><div class="tl" id="chk"></div></div><p class="feed-title mono" data-t="feedT">ACTIVIDAD</p><div class="feed" id="feed"></div></aside>
+    </div>
+  </div>
+  
+  <aside class="drawer" id="ocDrawer" aria-hidden="true">
+    <button class="drawer-close" id="ocClose" type="button" aria-label="Cerrar">✕</button>
+    <h2 id="ocTitle">OC</h2>
+    <p class="demo-note" id="ocMeta"></p>
+    <div class="oc-steps" id="ocSteps"></div>
+    <div class="tl" id="ocHist"></div>
+    <div class="opts" id="ocActs" style="margin-top:14px">
+      <button class="btn btn-primary" id="ocApprove" type="button" data-t="ocApr">✓ Aprobar etapa</button>
+      <button class="ctl danger" id="ocReject" type="button" data-t="ocRej">✕ Rechazar</button>
+      <button class="btn btn-primary" id="ocInvoice" type="button" hidden data-t="ocInv">Facturar esta OC →</button>
+    </div>
+  </aside>
+  <div class="modal-bg" id="modalBg">
+    <div class="modal">
+      <h2 data-t="mCancel">Cancelar comprobante</h2>
+      <p class="demo-note" id="mUuid"></p>
+      <div class="opts">
+        <button class="ctl" data-motivo="02" type="button" data-t="m02">02 — Comprobante emitido con errores</button>
+        <button class="ctl" data-motivo="03" type="button" data-t="m03">03 — No se llevó a cabo la operación</button>
+        <button class="ctl danger" id="mClose" type="button" data-t="mBack">Volver</button>
+      </div>
+    </div>
+  </div>
+  <span class="demo-ribbon mono" data-t="ribbon">DEMO CONCEPTUAL · DATOS SIMULADOS</span>
+  <script src="../fy-motion.js" defer></script>
+  <script src="tax.js" defer></script>
+</body>
+</html>

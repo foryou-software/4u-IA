@@ -39,7 +39,10 @@ function render(){
   +'</div></div>'
   +'<div class="dcards">'
   +'<div class="dcard"><h3>'+FY.t('demo.want.t')+'</h3><p>'+FY.t('demo.want.d')+'</p>'
-  +'<a class="btn btn-primary" href="mailto:eddy.penaloza@fouryou.io?subject='+encodeURIComponent(FY.t('demo.subject')+' · 4U'+sys.name)+'">'+FY.t('demo.cta')+'</a></div>'
+  +'<div class="dact">'
+  +(sys.full?'<a class="btn btn-primary" href="'+sys.full+'">'+FY.t('demo.open')+'</a>':'')
+  +'<a class="btn '+(sys.full?'btn-ghost':'btn-primary')+'" href="mailto:eddy.penaloza@fouryou.io?subject='+encodeURIComponent(FY.t('demo.subject')+' · 4U'+sys.name)+'">'+FY.t('demo.cta')+'</a>'
+  +'</div></div>'
   +'<div class="dcard illus"><span class="kicker">'+FY.t('demo.illus.t')+'</span><p>'+FY.t('demo.illus.d')+'</p></div>'
   +'</div>'
   +'<div class="dnext"><a href="demo.html?s='+nextSlug()+'">'+FY.t('demo.next')+'</a></div></div>';
