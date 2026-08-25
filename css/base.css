@@ -1,0 +1,101 @@
+/* FOURYOU · base v18 — primitivas + ventanas de producto */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;letter-spacing:-.03em;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+a{color:var(--acc);text-decoration:none;transition:color var(--t-fb) var(--ease-fade)}
+a:hover{color:var(--text)}
+img,svg{display:block}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+input,textarea,select{font:inherit;color:var(--text)}
+::selection{background:var(--brand-500);color:#F4F7FB}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:2px}
+.mono{font-family:var(--font-mono);font-feature-settings:"tnum";font-variant-numeric:tabular-nums}
+.container{max-width:1120px;margin-inline:auto;padding-inline:clamp(20px,4vw,36px)}
+.lead{font-size:clamp(.95rem,1.2vw,1.05rem);color:var(--muted);max-width:56ch}
+.kicker{font-family:var(--font-mono);font-size:.64rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--acc)}
+em.fu{font-style:normal;color:var(--acc)}
+.grad{background:linear-gradient(100deg,var(--brand-200),var(--brand-400) 55%,var(--brand-300));background-size:220% 100%;background-position:0% 0;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+[data-theme="light"] .grad{background-image:linear-gradient(100deg,var(--brand-700),var(--brand-500) 55%,var(--brand-400));background-size:220% 100%;background-position:0% 0}
+.grad.sweep{animation:fyGradIn 1.3s var(--ease-enter) .25s both}
+@keyframes fyGradIn{from{background-position:130% 0}to{background-position:0% 0}}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--surface);color:var(--text);padding:10px 16px;border:1px solid var(--border-strong);border-radius:var(--r-sm);font-family:var(--font-mono);font-size:.8rem}
+.skip:focus-visible{left:12px;top:12px}
+/* botones — radio 10, jamás píldora */
+.btn{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;font-family:var(--font-mono);font-size:.68rem;font-weight:500;letter-spacing:.06em;padding:9px 16px;border-radius:var(--r-md);border:1px solid transparent;position:relative;overflow:hidden;transition:transform var(--t-fb) var(--ease-enter),background var(--t-state) var(--ease-fade),border-color var(--t-state) var(--ease-fade),color var(--t-state) var(--ease-fade)}
+.btn-primary::after{content:"";position:absolute;inset:-40% -60%;background:linear-gradient(105deg,transparent 44%,rgba(8,35,73,.16) 50%,transparent 56%);transform:translateX(-130%);pointer-events:none}
+[data-theme="light"] .btn-primary::after{background:linear-gradient(105deg,transparent 44%,rgba(255,255,255,.3) 50%,transparent 56%)}
+.btn-primary:hover::after{animation:fySheen .8s var(--ease-fade) both}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--text);color:var(--bg)}
+.btn-primary:hover{background:var(--brand-200);color:#05070A}
+[data-theme="light"] .btn-primary{background:var(--brand-700);color:#fff}
+[data-theme="light"] .btn-primary:hover{background:var(--brand-500);color:#fff}
+.btn-ghost{border-color:var(--border-strong);color:var(--text)}
+.btn-ghost:hover{border-color:var(--border-brand);color:var(--acc)}
+/* marca: lockup tipográfico <4U/> (compacto) + tile 4U estilo app */
+.fy-mark{display:inline-flex;align-items:baseline;font-family:var(--font-display);font-weight:700;font-size:1.26rem;letter-spacing:-.04em;line-height:1;color:var(--text);user-select:none}
+.fy-mark .bk,.fy-mark .bs{display:inline-block;font-weight:600;font-size:.8em;transition:color var(--t-state) var(--ease-fade),transform var(--t-state) var(--ease-enter)}
+.fy-mark .bk{color:var(--muted)}
+.fy-mark .bs{color:var(--acc)}
+.fy-mark .b4{padding-inline:2px}
+.fy-brand:hover .bk{transform:translateX(-2px);color:var(--acc)}
+.fy-brand:hover .bs{transform:translateX(2px)}
+.fy-tile{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;background:#F4F7FB;color:#082349;font-family:var(--font-display);font-weight:700;font-size:1.04rem;letter-spacing:-.05em;line-height:1;user-select:none;box-shadow:var(--shadow-1)}
+[data-theme="light"] .fy-tile{background:var(--brand-700);color:#FFFFFF}
+.fy-brand{display:inline-flex;align-items:center;gap:12px;color:var(--text)}
+.fy-brand:hover{color:var(--text)}
+.fy-word{display:flex;flex-direction:column;gap:1px;font-family:var(--font-display);font-weight:700;font-size:.92rem;letter-spacing:.12em}
+.fy-word i{font-style:normal;font-family:var(--font-mono);font-weight:400;font-size:.6rem;letter-spacing:.3em;color:var(--muted);text-transform:uppercase}
+/* emblema hero: núcleo + ondas cuadradas-redondeadas + ritual */
+.fy-emblem{position:relative;width:104px;height:64px;perspective:620px;display:block;margin:4px 0 26px}
+.fy-core{position:relative;display:flex;align-items:center;justify-content:center;width:104px;height:64px;background:linear-gradient(150deg,var(--surface-2),var(--surface));border:1px solid var(--border-strong);border-radius:16px;box-shadow:var(--shadow-1);transition:transform var(--t-state) var(--ease-enter);transform-style:preserve-3d;overflow:hidden}
+.fy-core .fy-mark{font-size:1.5rem;color:var(--text)}
+.fy-core .fy-mark .bk{color:var(--muted)}
+.fy-core .fy-mark .bs{color:var(--acc)}
+.fy-core .fy-sheen{background:linear-gradient(105deg,transparent 42%,rgba(169,199,242,.14) 50%,transparent 58%)}
+.fy-core.nsm{width:56px;height:34px;border-radius:9px}
+.fy-core.nsm .fy-mark{font-size:.92rem}
+.fy-sheen{position:absolute;inset:-40% -70%;background:linear-gradient(105deg,transparent 42%,rgba(169,199,242,.16) 50%,transparent 58%);transform:translateX(-120%);pointer-events:none}
+.fy-wave{position:absolute;inset:0;border:1px solid var(--border-brand);border-radius:16px;opacity:0;animation:fyWave 4.2s var(--ease-fade) infinite;pointer-events:none;transition:border-color var(--t-state) var(--ease-fade)}
+.fy-wave.w2{animation-delay:1.4s}.fy-wave.w3{animation-delay:2.8s}
+@keyframes fyWave{0%{transform:scale(.96);opacity:0}18%{opacity:.85}100%{transform:scale(1.75);opacity:0}}
+.fy-emblem:hover .fy-wave,.fy-emblem.lit .fy-wave{animation-duration:2.6s}
+.fy-emblem.lit .fy-wave{border-color:var(--brand-400)}
+.fy-emblem:hover .fy-sheen{animation:fySheen 2.2s var(--ease-fade) both}
+.fy-emblem:hover .fy-core{transform:scale(1.04)}
+@keyframes fySheen{from{transform:translateX(-120%)}to{transform:translateX(120%)}}
+/* ventana de producto */
+.fy-window{margin:0;background:var(--window);border:1px solid var(--window-border);border-radius:var(--r-sm);overflow:hidden;box-shadow:var(--shadow-1);position:relative}
+.fy-winbar{display:flex;align-items:center;gap:10px;padding:8px 12px;border-bottom:1px solid var(--window-border);background:linear-gradient(180deg,rgba(111,163,232,.05),transparent)}
+.fy-dots{display:flex;gap:5px}
+.fy-dots i{width:8px;height:8px;border-radius:var(--r-node);background:var(--window-muted);opacity:.55}
+.fy-dots i:nth-child(2){opacity:.38}.fy-dots i:nth-child(3){opacity:.24}
+.fy-wintitle{font-family:var(--font-mono);font-size:.68rem;font-weight:500;letter-spacing:.08em;color:var(--window-muted)}
+.fy-winchip{margin-left:auto;font-family:var(--font-mono);font-size:.58rem;letter-spacing:.06em;color:var(--window-muted);border:1px solid var(--window-border);border-radius:var(--r-chip);padding:3px 7px;white-space:nowrap}
+.fy-live{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:.62rem;font-weight:500;letter-spacing:.14em;color:var(--ok)}
+.fy-live::before{content:"";width:7px;height:7px;border-radius:var(--r-node);background:var(--ok);animation:fyBlink 2.4s var(--ease-fade) infinite}
+@keyframes fyBlink{0%,100%{opacity:1}50%{opacity:.3}}
+.fy-winbody{position:relative;height:200px;background-image:repeating-linear-gradient(0deg,var(--window-grid) 0 1px,transparent 1px 28px),repeating-linear-gradient(90deg,var(--window-grid) 0 1px,transparent 1px 28px)}
+/* escena genérica */
+.scn{position:absolute;inset:0;font-size:10px;color:var(--window-text)}
+.scn .rd{position:absolute;left:12px;bottom:9px;right:12px;font-family:var(--font-mono);font-size:.92em;letter-spacing:.05em;color:var(--window-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.scn .chip{position:absolute;font-family:var(--font-mono);font-size:.9em;padding:3px 7px;border-radius:var(--r-chip);border:1px solid var(--window-border-strong);background:var(--window);color:var(--window-text);white-space:nowrap}
+.scn .chip.ok{color:var(--ok);border-color:rgba(52,192,139,.4)}
+.scn .chip.warn{color:var(--warn);border-color:rgba(226,166,73,.4)}
+.scn .chip.acc{color:var(--acc);border-color:var(--border-brand)}
+/* pausa de loops (gobernanza fyLoop) */
+.fy-paused,.fy-paused *{animation-play-state:paused!important}
+html.fy-hidden *{animation-play-state:paused!important}
+/* view transitions bento→ficha */
+/* view transitions bento→ficha: se activan desde theme.js solo fuera de iframes */
+::view-transition-old(root),::view-transition-new(root){animation-duration:.24s;animation-timing-function:var(--ease-fade)}
+/* reduced motion: estados finales, jamás ventana vacía */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  @view-transition{navigation:none}
+  .grad.sweep,.fy-wave,.fy-live::before,.fy-emblem:hover .fy-sheen{animation:none!important}
+  .fy-wave{display:none}
+  .fy-core,.fy-brand:hover .bk,.fy-brand:hover .bs{transform:none!important}
+}
